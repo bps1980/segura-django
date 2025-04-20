@@ -1,0 +1,133 @@
+{% extends "components/base.html" %}
+{% load static %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SAM.gov Tools – Whitepaper | Segura Mgmt</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #fff;
+      color: #222;
+      margin: 2rem;
+      line-height: 1.7;
+    }
+    h1, h2 {
+      color: #003366;
+    }
+    h1 {
+      border-bottom: 2px solid #ccc;
+      padding-bottom: 0.5rem;
+    }
+    .section {
+      margin-bottom: 2rem;
+    }
+    ul {
+      padding-left: 1.5rem;
+    }
+    code {
+      background: #f5f5f5;
+      padding: 2px 5px;
+      border-radius: 3px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>SAM.gov Tools – Whitepaper</h1>
+  <p><strong>Prepared by:</strong> Segura Mgmt Services, LLC</p>
+
+  <div class="section">
+    <h2>1. Executive Summary</h2>
+    <p>
+      The SAM.gov Tools platform is a robust automation system that empowers federal contractors to find, filter, respond to, and submit federal opportunities in record time. By aggregating data from <code>sam.gov</code>, <code>ebuy.gsa.gov</code>, and related procurement portals, this platform streamlines acquisition lifecycle workflows for small businesses and prime contractors alike.
+    </p>
+  </div>
+
+  <div class="section">
+    <h2>2. Purpose</h2>
+    <p>
+      Government contracting is lucrative but highly complex. With thousands of new notices posted weekly, many firms miss out on key contracts due to inefficient discovery and slow turnaround. Our platform solves this with:
+    </p>
+    <ul>
+      <li>Automated scraping and API-based intake from SAM and GSA</li>
+      <li>Real-time alerts filtered by NAICS, set-aside, keywords</li>
+      <li>Auto-generated proposal templates and data entry</li>
+      <li>CRM-style contractor profile management</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>3. Architecture & Technologies</h2>
+    <ul>
+      <li><strong>Backend:</strong> Django, PostgreSQL, Celery</li>
+      <li><strong>Frontend:</strong> React or Django Templates</li>
+      <li><strong>Document Gen:</strong> Python-docx, PyPDF2, ReportLab</li>
+      <li><strong>Email Engine:</strong> SMTP (w/ DKIM, SPF, custom domains)</li>
+      <li><strong>Deployment:</strong> AWS EC2 or Docker-based</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>4. Key Features</h2>
+    <ul>
+      <li>Smart scraper with auto-scheduling</li>
+      <li>PDF/DOCX proposal generation</li>
+      <li>Auto-classify notices by opportunity type</li>
+      <li>Track due dates, NAICS matches, size standards</li>
+      <li>Upload/preview proposal documents</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>5. Use Cases</h2>
+    <ul>
+      <li><strong>SBIR/STTR Grant Writers:</strong> Get notified when new opportunities are posted and submit in time</li>
+      <li><strong>IT Services Vendors:</strong> Match with tech-focused NAICS contracts</li>
+      <li><strong>Prime Contractors:</strong> Use the bulk export + CRM functionality</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>6. Roadmap</h2>
+    <ul>
+      <li>Phase I – Core notice ingestion + filtering ✅</li>
+      <li>Phase II – AI matching and win-rate ranking (Q3)</li>
+      <li>Phase III – Subcontractor matching & teaming portal</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>7. Compliance & Security</h2>
+    <p>
+      All data is securely stored on encrypted servers. OAuth and two-factor authentication are supported. PDF/docx generation is sandboxed. No credentials are stored for government portals.
+    </p>
+  </div>
+
+  <div class="section">
+    <h2>8. Business Model</h2>
+    <ul>
+      <li><strong>SaaS Plans:</strong> $49, $99, and $199/month</li>
+      <li><strong>Enterprise:</strong> Licensing to primes and teaming brokers</li>
+      <li><strong>White Label:</strong> Partner integrations for large portals</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>9. Contact</h2>
+    <p>
+      <strong>Brennen Segura</strong><br>
+      CEO, Segura Mgmt Services<br>
+      <a href="mailto:brennen@seguramgmt.com">brennen@seguramgmt.com</a><br>
+      <a href="https://seguramgmt.com" target="_blank">https://seguramgmt.com</a>
+    </p>
+  </div>
+
+</body>
+</html>
+
+{% endblock %}

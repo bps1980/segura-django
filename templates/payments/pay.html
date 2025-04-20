@@ -1,0 +1,6 @@
+<!-- templates/payments/pay.html -->
+<form action="{% url 'coinbase_charge' %}" method="post">
+    {% csrf_token %}
+    <button type="submit">Pay with Crypto</button>
+  </form>
+  

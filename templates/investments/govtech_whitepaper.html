@@ -1,0 +1,143 @@
+{% extends "components/base.html" %}
+{% load static %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>GovTech Proposal Engine Whitepaper | Segura Mgmt</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fff;
+      color: #333;
+      margin: 0;
+      padding: 2rem;
+      line-height: 1.6;
+    }
+    h1, h2, h3 {
+      color: #1f3a93;
+    }
+    ul {
+      padding-left: 1.5rem;
+    }
+    section {
+      margin-bottom: 3rem;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>GovTech Proposal Engine</h1>
+  <h2>Segura Mgmt – Whitepaper</h2>
+
+  <section>
+    <h2>1. Introduction</h2>
+    <p>
+      The GovTech Proposal Engine is a smart automation system designed to help startups, small businesses,
+      and federal contractors streamline their bidding process for government contracts. By automating
+      solicitation tracking, scope analysis, and document generation, it empowers non-experts to participate
+      in the lucrative federal and state contracting ecosystems.
+    </p>
+  </section>
+
+  <section>
+    <h2>2. Purpose</h2>
+    <p>
+      The purpose of this whitepaper is to explain the architecture, capabilities, and roadmap of
+      the GovTech Proposal Engine to potential users, partners, and investors.
+    </p>
+  </section>
+
+  <section>
+    <h2>3. Core Features</h2>
+    <ul>
+      <li>Daily scraping of new SAM.gov and NASA SEWP solicitations based on NAICS codes</li>
+      <li>AI-based scope analysis for determining fit</li>
+      <li>Preloaded proposal templates for Technical, Pricing, and Past Performance sections</li>
+      <li>PDF generation with support for compliance formatting</li>
+      <li>Email packaging and logging system for auto-submission</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>4. Architecture Overview</h2>
+    <ul>
+      <li><strong>Backend:</strong> Django, PostgreSQL, Celery</li>
+      <li><strong>Frontend:</strong> React.js, Bootstrap</li>
+      <li><strong>Integrations:</strong> SAM.gov API, FBO scraper, PDFKit, OpenAI GPT</li>
+      <li><strong>Security:</strong> Role-based access control, JWT authentication</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>5. Automation Workflow</h2>
+    <ol>
+      <li>Fetch solicitations from public government sources</li>
+      <li>Extract scope, deadline, and evaluation factors</li>
+      <li>Generate tailored proposals using stored templates + user inputs</li>
+      <li>Auto-submit proposals via email or government portals</li>
+      <li>Track submissions and status from the admin dashboard</li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>6. Use Cases</h2>
+    <ul>
+      <li>SBIR/STTR submissions</li>
+      <li>5G and AI government initiatives</li>
+      <li>Software modernization bids</li>
+      <li>Environmental & logistics contracts</li>
+      <li>Cybersecurity proposals for DoD and DHS</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>7. Monetization Strategy</h2>
+    <ul>
+      <li>Monthly subscription tiers based on document output limits</li>
+      <li>White-labeled SaaS license for consultants and GovCon incubators</li>
+      <li>Marketplace for prewritten technical modules and resumes</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>8. Roadmap</h2>
+    <ul>
+      <li><strong>Q2 2025:</strong> Release MVP to select government partners</li>
+      <li><strong>Q3 2025:</strong> Launch proposal pack marketplace</li>
+      <li><strong>Q4 2025:</strong> Partner with PTAC offices and SBA consultants</li>
+      <li><strong>2026:</strong> Scale to 1,000+ users and offer DoD DFARS compliance tools</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>9. Compliance & Security</h2>
+    <p>
+      All user data is encrypted and stored securely. Documents meet formatting standards outlined by
+      FAR, DFARS, and DoD instructions. Submissions are archived for 5 years for audit purposes.
+    </p>
+  </section>
+
+  <section>
+    <h2>10. Conclusion</h2>
+    <p>
+      The GovTech Proposal Engine removes the guesswork and inefficiencies of preparing and submitting
+      government proposals. It’s time to level the playing field for small businesses with automation.
+    </p>
+  </section>
+
+  <section>
+    <h2>Contact</h2>
+    <p><strong>Company:</strong> Segura Mgmt</p>
+    <p><strong>Email:</strong> brennen@seguramgmt.com</p>
+    <p><strong>Website:</strong> www.seguramgmt.com</p>
+    <p><strong>GitHub:</strong> github.com/bps1980</p>
+  </section>
+
+</body>
+</html>
+
+{% endblock %}

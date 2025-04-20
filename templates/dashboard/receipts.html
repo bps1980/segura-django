@@ -1,0 +1,97 @@
+{% extends 'components/base.html' %}
+{% load static %}  {# ✅ This line is REQUIRED to use static tag #}
+{% block content %}
+
+<style>
+    .receipt-wrapper {
+        max-width: 750px;
+        margin: 40px auto;
+        background: #fff;
+        padding: 40px;
+        border: 1px solid #ddd;
+        font-family: 'Georgia', serif;
+        line-height: 1.6;
+    }
+
+    .receipt-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 30px;
+    }
+
+    .receipt-header h1 {
+        font-size: 24px;
+        margin: 0;
+    }
+
+    .receipt-body p {
+        margin: 6px 0;
+    }
+
+    .receipt-body hr {
+        margin: 20px 0;
+    }
+
+    .logo {
+        height: 60px;
+    }
+
+    .text-muted {
+        color: #666;
+        font-size: 14px;
+    }
+
+    .thank-you {
+        margin-top: 30px;
+        font-style: italic;
+        color: #444;
+    }
+
+    .print-btn {
+        text-align: right;
+        margin-top: 20px;
+    }
+</style>
+
+<div class="receipt-wrapper">
+    <!-- Header -->
+    <div class="receipt-header">
+        <div>
+            <h1>Segura Mgmt</h1>
+            <p class="text-muted">Investment Management & Venture Funding</p>
+        </div>
+        <div>
+            {% comment %} Optional logo if you have one {% endcomment %}
+            <img src="{% static 'assets/images/brand-logos/logo.png' %}" alt="Segura Logo" class="logo">
+        </div>
+    </div>
+
+    <hr>
+
+    <!-- Receipt Body -->
+    <div class="receipt-body">
+        <h2 class="text-center">Receipt / Proof of Investment</h2>
+        <p><strong>Date:</strong> {{ payment.created_at|date:"F j, Y" }}</p>
+        <p><strong>Investor:</strong> {{ user.get_full_name }}</p>
+        <p><strong>Email:</strong> {{ user.email }}</p>
+
+        <hr>
+
+        <p><strong>Project:</strong> {{ investment.project }}</p>
+        <p><strong>Amount Invested:</strong> ${{ payment.amount }}</p>
+        <p><strong>Transaction ID:</strong> {{ payment.transaction_id }}</p>
+        <p><strong>Status:</strong> {{ payment.status|title }}</p>
+        <p><strong>Payment Method:</strong> {{ payment.payment_type|title }}</p>
+
+        <hr>
+
+        <p class="thank-you">Thank you for your investment. This receipt serves as official confirmation of your transaction with Segura Mgmt.</p>
+    </div>
+
+    <div class="print-btn">
+        <button onclick="window.print()" class="btn btn-outline-secondary">Print / Save PDF</button>
+    </div>
+</div>
+
+{% endblock %}

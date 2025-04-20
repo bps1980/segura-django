@@ -1,0 +1,152 @@
+{% load static %}
+
+            <aside class="app-sidebar sticky" id="sidebar">
+
+                <!-- Start::main-sidebar-header -->
+                <div class="main-sidebar-header">
+                    <a href="index" class="header-logo">
+                        <img src="{% static 'assets/images/brand-logos/desktop-logo.png'%}" alt="logo" class="desktop-logo">
+                        <img src="{% static 'assets/images/brand-logos/toggle-logo.png'%}" alt="logo" class="toggle-logo">
+                        <img src="{% static 'assets/images/brand-logos/desktop-dark.png'%}" alt="logo" class="desktop-dark">
+                        <img src="{% static 'assets/images/brand-logos/toggle-dark.png'%}" alt="logo" class="toggle-dark">
+                        <img src="{% static 'assets/images/brand-logos/desktop-white.png'%}" alt="logo" class="desktop-white">
+                        <img src="{% static 'assets/images/brand-logos/toggle-white.png'%}" alt="logo" class="toggle-white">
+                    </a>
+                </div>
+                <!-- End::main-sidebar-header -->
+
+                <!-- Start::main-sidebar -->
+                <div class="main-sidebar" id="sidebar-scroll">
+
+                    <!-- Start::nav -->
+                    <nav class="main-menu-container nav nav-pills flex-column sub-open">
+                        <div class="slide-left" id="slide-left">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="#7b8191" width="24" height="24" viewBox="0 0 24 24"> <path d="M13.293 6.293 7.586 12l5.707 5.707 1.414-1.414L10.414 12l4.293-4.293z"></path> </svg>
+                        </div>
+                        <ul class="main-menu">
+                            <!-- Start::slide__category -->
+                            <li class="slide__category"><span class="category-name">Main</span></li>
+                            <!-- End::slide__category -->
+
+                            <!-- Start::slide -->
+                            <li class="slide">
+                                <a href="{% url 'dashboard' %}" class="side-menu__item">
+                                    <i class="bx bx-home side-menu__icon"></i>
+                                    <span class="side-menu__label">Dashboard</span>
+                                </a>
+                            </li>
+
+                            <!-- Pitch Decks -->
+                            <li class="slide has-sub">
+                                <a href="javascript:void(0);" class="side-menu__item">
+                                    <i class="bx bx-folder side-menu__icon"></i>
+                                    <span class="side-menu__label">Pitch Decks</span>
+                                    <i class="fe fe-chevron-right side-menu__angle"></i>
+                                </a>
+                               <ul class="slide-menu child1">
+                                    <li class="slide"><a href="{% url 'segurafinance_pitch_deck' %}" class="side-menu__item">SeguraFinance Pitch Deck</a></li>
+                                    <li class="slide"><a href="{% url 'segurainsures_pitch_deck' %}" class="side-menu__item">SeguraInsures Pitch Deck</a></li> 
+                                    <li class="slide"><a href="{% url 'segurasafeswap_pitch_deck' %}" class="side-menu__item">SeguraSafeSwap Pitch Deck</a></li>
+                                    <li class="slide"><a href="{% url 'cajunsea_pitch_deck' %}" class="side-menu__item">CajunSea Goods Pitch Deck</a></li> 
+                                    <li class="slide"><a href="{% url 'mdav_pitch_deck' %}" class="side-menu__item">MDAV Pitch Deck</a></li>
+                                    <li class="slide"><a href="{% url 'pitch_deck' %}" class="side-menu__item">DAG Pitch Deck</a></li>
+                                    <li class="slide"><a href="{% url 'govtech_pitch_deck' %}" class="side-menu__item">GovTech Pitch Deck</a></li>
+                                    <li class="slide"><a href="{% url 'hftbot_pitch_deck' %}" class="side-menu__item">HFT Bot Pitch Deck</a></li>
+                                    <li class="slide"><a href="{% url 'aichat_pitch_deck' %}" class="side-menu__item">AI Chat Pitch Deck</a></li>
+                                    <li class="slide"><a href="{% url 'arparks_pitch_deck' %}" class="side-menu__item">AR Parks Pitch Deck</a></li> 
+                                    <li class="slide"><a href="{% url 'nga_pitch_deck' %}" class="side-menu__item">NGA Raster Pitch Deck</a></li>
+                                    <li class="slide"><a href="{% url 'xactimate_pitch_deck' %}" class="side-menu__item">Xactimate Pitch Deck</a></li>
+                                    <li class="slide"><a href="{% url 'sam_pitch_deck' %}" class="side-menu__item">SAM.gov Pitch Deck</a></li>
+                                </ul>
+                            </li>
+
+                            <!-- White Paper -->
+                            <li class="slide has-sub">
+                                <a href="javascript:void(0);" class="side-menu__item">
+                                    <i class="bx bx-folder side-menu__icon"></i>
+                                    <span class="side-menu__label">White Paper</span>
+                                    <i class="fe fe-chevron-right side-menu__angle"></i>
+                                </a>
+                               <ul class="slide-menu child1">
+                                <li class="slide"><a href="{% url 'segurafinance_pitch_deck' %}" class="side-menu__item">SeguraFinance White Paper</a></li>
+                                <li class="slide"><a href="{% url 'segurainsures_pitch_deck' %}" class="side-menu__item">SeguraInsures White Paper</a></li> 
+                                <li class="slide"><a href="{% url 'segurasafeswap_whitepaper' %}" class="side-menu__item">SeguraSafeSwap White Paper</a></li>
+                                <li class="slide"><a href="{% url 'cajunsea_whitepaper' %}" class="side-menu__item">CajunSea Goods White Paper</a></li> 
+                                <li class="slide"><a href="{% url 'mdav_whitepaper' %}" class="side-menu__item">MDAV White Paper</a></li>
+                                <li class="slide"><a href="{% url 'dag_whitepaper' %}" class="side-menu__item">DAG White Paper</a></li>
+                                <li class="slide"><a href="{% url 'govtech_whitepaper' %}" class="side-menu__item">GovTech White Paper</a></li>
+                                <li class="slide"><a href="{% url 'hftbot_whitepaper' %}" class="side-menu__item">HFT Bot White Paper</a></li>
+                                <li class="slide"><a href="{% url 'aichat_whitepaper' %}" class="side-menu__item">AI Chat White Paper</a></li>
+                                <li class="slide"><a href="{% url 'arparks_whitepaper' %}" class="side-menu__item">AR Parks White Paper</a></li> 
+                                <li class="slide"><a href="{% url 'nga_whitepaper' %}" class="side-menu__item">NGA Raster White Paper</a></li>
+                                <li class="slide"><a href="{% url 'xactimate_whitepaper' %}" class="side-menu__item">Xactimate White Paper</a></li>
+                                <li class="slide"><a href="{% url 'sam_whitepaper' %}" class="side-menu__item">SAM.gov White Paper</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="slide">
+                                <a href="{% url 'account_settings' %}" class="side-menu__item">
+                                    <i class="bx bx-user side-menu__icon"></i>
+                                    <span class="side-menu__label">Account Settings</span>
+                                </a>
+                            </li>
+
+                            <li class="slide">
+                                <a href="{% url 'password_change' %}" class="side-menu__item">
+                                    <i class="bx bx-lock side-menu__icon"></i>
+                                    <span class="side-menu__label">Change Password</span>
+                                </a>
+                            </li>
+
+                            <li class="slide">
+                                <a href="{% url 'invested_projects' %}" class="side-menu__item">
+                                    <i class="bx bx-check-double side-menu__icon"></i>
+                                    <span class="side-menu__label">Invested Projects</span>
+                                </a>
+                            </li>
+
+                            <li class="slide">
+                                <a href="{% url 'interested_projects' %}" class="side-menu__item">
+                                    <i class="bx bx-star side-menu__icon"></i>
+                                    <span class="side-menu__label">Interested Projects</span>
+                                </a>
+                            </li>
+
+                            <li class="slide">
+                                <a href="{% url 'investment_payments' %}" class="side-menu__item">
+                                    <i class="bx bx-credit-card side-menu__icon"></i>
+                                    <span class="side-menu__label">Investment Payment</span>
+                                </a>
+                            </li>
+
+                            <!-- Files Dropdown -->
+                            <li class="slide has-sub">
+                                <a href="javascript:void(0);" class="side-menu__item">
+                                    <i class="bx bx-folder side-menu__icon"></i>
+                                    <span class="side-menu__label">Files</span>
+                                    <i class="fe fe-chevron-right side-menu__angle"></i>
+                                </a>
+                               <ul class="slide-menu child1">
+                                    <li class="slide"><a href="{% url 'investment_agreements' %}" class="side-menu__item">Investment Agreements</a></li>
+                                    <li class="slide"><a href="{% url 'investment_receipts' %}" class="side-menu__item">Receipts / Proof</a></li>
+                                    <li class="slide"><a href="{% url 'investor_certificates' %}" class="side-menu__item">Investor Certificate</a></li>
+                                    <li class="slide"><a href="{% url 'regulatory_docs' %}" class="side-menu__item">Regulatory Compliance</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="slide">
+                                <a href="{% url 'kyc_list' %}" class="side-menu__item">
+                                    <i class="bx bx-id-card side-menu__icon"></i>
+                                    <span class="side-menu__label">KYC's</span>
+                                </a>
+                            </li>
+                            <!-- End:: Dashboard Sidebar Navigation -->
+                        </ul>
+                        <div class="slide-right" id="slide-right"><svg xmlns="http://www.w3.org/2000/svg" fill="#7b8191" width="24" height="24" viewBox="0 0 24 24"> <path d="M10.707 17.707 16.414 12l-5.707-5.707-1.414 1.414L13.586 12l-4.293 4.293z"></path> </svg></div>
+                    </nav>
+                    <!-- End::nav -->
+
+                </div>
+                <!-- End::main-sidebar -->
+
+            </aside>

@@ -1,0 +1,92 @@
+{% extends 'components/base.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+    .compliance-wrapper {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 40px;
+        background: #fff;
+        box-shadow: 0 0 10px rgba(0,0,0,0.05);
+        border-left: 6px solid #6f42c1;
+        font-family: 'Georgia', serif;
+    }
+
+    .compliance-title {
+        font-size: 26px;
+        font-weight: bold;
+        margin-bottom: 20px;
+        color: #333;
+    }
+
+    .compliance-section {
+        margin-bottom: 30px;
+    }
+
+    .compliance-section h5 {
+        font-weight: bold;
+        color: #6f42c1;
+    }
+
+    .seal {
+        display: inline-block;
+        margin-top: 40px;
+        padding: 12px 25px;
+        background: #6f42c1;
+        color: white;
+        font-weight: bold;
+        border-radius: 50%;
+        font-size: 18px;
+        border: 3px solid #fff;
+        box-shadow: 0 0 0 3px #6f42c1;
+    }
+</style>
+
+<div class="container mt-5">
+    <div class="compliance-wrapper">
+        <div class="compliance-title">Regulatory Compliance Disclosure</div>
+
+        <div class="compliance-section">
+            <h5>1. General Compliance Overview</h5>
+            <p>Segura Mgmt is committed to conducting all operations in full compliance with applicable U.S. laws, including securities regulations, data protection frameworks, and anti-money laundering standards. This platform is designed to align with modern regulatory expectations while promoting transparency and investor protection.</p>
+        </div>
+
+        <div class="compliance-section">
+            <h5>2. SEC & Investment Disclosures</h5>
+            <p>Investments offered through Segura Mgmt are generally made under Regulation D (Rule 506(c)) or Regulation CF exemptions. All offerings are presented with the intent to comply with SEC requirements for private placements, and are available only to accredited investors or verified participants as outlined by regulatory standards.</p>
+        </div>
+
+        <div class="compliance-section">
+            <h5>3. Know Your Customer (KYC) & Anti-Money Laundering (AML)</h5>
+            <p>All users must complete KYC verification prior to making an investment. Segura Mgmt leverages secure identity screening technologies to verify users in compliance with the Bank Secrecy Act (BSA), USA PATRIOT Act, and FINRA Rule 3310. Suspicious activity reports (SARs) may be filed as required by law.</p>
+        </div>
+
+        <div class="compliance-section">
+            <h5>4. Data Security & Privacy</h5>
+            <p>Segura Mgmt adheres to best practices in cybersecurity and investor data protection. All sensitive data is encrypted, stored securely, and processed in accordance with the California Consumer Privacy Act (CCPA) and General Data Protection Regulation (GDPR) where applicable.</p>
+        </div>
+
+        <div class="compliance-section">
+            <h5>5. Electronic Payment Compliance</h5>
+            <p>Stripe and Plaid integrations used on this platform meet PCI-DSS standards and are compliant with the Electronic Fund Transfer Act (EFTA). Payment data is never stored directly by Segura Mgmt and is processed via secure, third-party channels.</p>
+        </div>
+
+        <div class="compliance-section">
+            <h5>6. Document Retention & E-Signature Law</h5>
+            <p>Investment agreements, KYC records, and receipts are stored in compliance with SEC Rule 17a-4 and the ESIGN Act. Electronic signatures are legally binding and copies are available to both parties upon request.</p>
+        </div>
+
+        <div class="compliance-section">
+            <h5>7. Risk Disclosures</h5>
+            <p>Investing in early-stage ventures involves risk, including loss of capital. Segura Mgmt provides offering memorandums and subscription agreements for each opportunity, and encourages all investors to review these documents carefully and consult with their financial advisor.</p>
+        </div>
+
+        <p class="mt-5 text-muted">For questions regarding our compliance policies, please contact compliance@seguramgmt.com.</p>
+
+        <div class="text-center">
+            <div class="seal">Segura Mgmt</div>
+        </div>
+    </div>
+</div>
+{% endblock %}

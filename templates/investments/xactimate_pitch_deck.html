@@ -1,0 +1,135 @@
+{% extends "components/base.html" %}
+{% load static %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Xactimate Automation – Pitch Deck | Segura Mgmt</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 2rem;
+      background: #fff;
+      color: #222;
+      line-height: 1.6;
+    }
+    h1, h2 {
+      color: #003366;
+    }
+    h1 {
+      border-bottom: 2px solid #ccc;
+      padding-bottom: 0.3rem;
+    }
+    ul {
+      padding-left: 1.4rem;
+    }
+    .section {
+      margin-bottom: 2rem;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Xactimate Automation – Pitch Deck</h1>
+  <p><strong>Presented by:</strong> Segura Mgmt Services, LLC</p>
+
+  <div class="section">
+    <h2>1. Problem</h2>
+    <p>
+      The insurance adjusting industry relies heavily on manual data entry into Xactimate, especially during high-volume periods like natural disasters. Adjusters waste hours copying data from declaration pages into claim files, resulting in:
+    </p>
+    <ul>
+      <li>Input errors (policy number, coverage limits, etc.)</li>
+      <li>Slower deployment times</li>
+      <li>Reduced claim output and adjuster productivity</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>2. Solution</h2>
+    <p>
+      Our automated system extracts data from PDF declarations and creates a ready-to-use <code>.esx</code> file for import into Xactimate. The process is:
+    </p>
+    <ul>
+      <li>Fast: Processes PDFs in seconds</li>
+      <li>Accurate: Eliminates human entry errors</li>
+      <li>Seamless: Fits into existing Xactimate workflows</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>3. Product Demo</h2>
+    <ul>
+      <li>Upload PDF ➝ Extract key policy data</li>
+      <li>Generate <code>.esx</code> claim file</li>
+      <li>Import into Xactimate (local or cloud)</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>4. Market Opportunity</h2>
+    <ul>
+      <li>Over 60,000 licensed adjusters in the U.S.</li>
+      <li>$400M+ in Xactimate software revenue annually</li>
+      <li>Thousands of files processed per adjuster per year</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>5. Business Model</h2>
+    <ul>
+      <li><strong>Per File:</strong> $3–5 per .esx generation</li>
+      <li><strong>Subscription:</strong> $49/mo for unlimited use</li>
+      <li><strong>Bulk Licensing:</strong> For IA firms and CAT teams</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>6. Technology Stack</h2>
+    <ul>
+      <li><strong>Backend:</strong> Python, Django</li>
+      <li><strong>OCR Engine:</strong> Tesseract + custom regex parser</li>
+      <li><strong>File Generator:</strong> Proprietary .esx generator</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>7. Competitive Advantage</h2>
+    <ul>
+      <li>No other commercial solution automates .esx generation from policy PDFs</li>
+      <li>Direct integration potential with Xactimate (preferred vendor)</li>
+      <li>Rapid deployment with minimal training required</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>8. Team</h2>
+    <p>
+      <strong>Brennen Segura</strong> – Licensed Adjuster, Developer, and Founder of Segura Mgmt<br>
+      Proven deployment leader with 8+ years adjusting experience and deep Xactimate proficiency.
+    </p>
+  </div>
+
+  <div class="section">
+    <h2>9. Ask</h2>
+    <ul>
+      <li>Seeking $250,000 for scaling infrastructure, marketing, and licensing outreach</li>
+      <li>Strategic partnerships with insurance firms or software vendors</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>10. Contact</h2>
+    <p>
+      <strong>Email:</strong> <a href="mailto:brennen@seguramgmt.com">brennen@seguramgmt.com</a><br>
+      <strong>Website:</strong> <a href="https://seguramgmt.com" target="_blank">https://seguramgmt.com</a>
+    </p>
+  </div>
+
+</body>
+</html>
+
+{% endblock %}

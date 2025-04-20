@@ -1,0 +1,172 @@
+{% extends 'components/base.html' %}
+{% load static %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>DAG White Paper - Segura Mgmt</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 40px;
+      background: #f7f9fc;
+      color: #333;
+    }
+
+    .header {
+      background-color: #1a237e;
+      color: white;
+      padding: 20px;
+      border-radius: 8px;
+      margin-bottom: 40px;
+    }
+
+    .breadcrumbs {
+      font-size: 0.9em;
+      color: #5c6bc0;
+      margin-bottom: 5px;
+    }
+
+    h1, h2, h3 {
+      color: #1a237e;
+    }
+
+    section {
+      margin-bottom: 40px;
+    }
+
+    ul {
+      margin-top: 0;
+    }
+
+    .footer {
+      margin-top: 60px;
+      font-size: 0.9em;
+      color: #666;
+    }
+
+    code {
+      background-color: #eee;
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <div class="breadcrumbs">Pitch Deck / DAG / DAG White Paper</div>
+    <h1>Segura Mgmt</h1>
+    <h2>A Next-Generation Blockchain Ecosystem with Advanced Smart Contract Features</h2>
+  </div>
+
+  <section>
+    <h3>Abstract</h3>
+    <p>
+      This white paper presents a robust and innovative blockchain ecosystem that incorporates advanced features, including token creation, lending, staking, flash loans, NFT marketplaces, and real-time multimedia support for decentralized applications (dApps).
+      By leveraging cutting-edge Rust-based frameworks and optimized smart contract designs, this platform aims to redefine blockchain utility, scalability, and accessibility.
+    </p>
+  </section>
+
+  <section>
+    <h3>Key Features</h3>
+    <ul>
+      <li><strong>Tokenization Framework:</strong> ERC-20, NFT, and utility token creation and management.</li>
+      <li><strong>DeFi Protocols:</strong> Lending, staking, and flash loans with optimized risk control.</li>
+      <li><strong>NFT Marketplace:</strong> Minting, trading, royalty distribution, and cross-chain compatibility.</li>
+      <li><strong>Multimedia dApps:</strong> Real-time video/audio, NFT music streaming, and interactive content support.</li>
+      <li><strong>Smart Contract Framework:</strong> Rust-powered, modular, auditable contracts.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h3>Architecture</h3>
+    <ul>
+      <li><strong>Blockchain Layer:</strong> DAG-based, high throughput, PoS consensus.</li>
+      <li><strong>Smart Contract Layer:</strong> Modular and reusable.</li>
+      <li><strong>API & SDK:</strong> Developer-friendly interfaces.</li>
+      <li><strong>Storage Layer:</strong> Decentralized, scalable multimedia file storage.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h3>Transaction Processing</h3>
+    <p>
+      Transactions are submitted via APIs, validated through parent-child DAG links, and bundled adaptively for speed. Smart contracts execute in-layer, and results are stored on-chain. Layers compact dynamically to reduce overhead.
+    </p>
+  </section>
+
+  <section>
+    <h3>Advanced Features</h3>
+    <ul>
+      <li><strong>Smart Contracts:</strong> Rust-based, event-driven, token minting, DeFi automation.</li>
+      <li><strong>Staking & Lending:</strong> Validator-based staking, marketplace lending, flash loan logic.</li>
+      <li><strong>Flash Loans:</strong> Zero-collateral, intra-transaction loans for arbitrage or liquidation.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h3>Performance & Security</h3>
+    <ul>
+      <li>Parallel validation and sharded storage.</li>
+      <li>Adaptive bundling and compaction layers.</li>
+      <li>Formal verification, audit-ready codebase, multi-sig governance.</li>
+      <li>Ed25519 signatures, fallback validators, and reputation systems.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h3>APIs & Integration</h3>
+    <ul>
+      <li><code>/transactions</code>, <code>/dag</code>, <code>/contracts/invoke</code>, <code>/consensus/load</code></li>
+      <li>Wallets and dApps communicate via RESTful endpoints.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h3>Use Cases</h3>
+    <ul>
+      <li>DeFi: Yield farming, flash loan arbitrage, unbanked lending.</li>
+      <li>NFTs: Royalties, gaming assets, music streaming.</li>
+      <li>Multimedia: Video-on-demand, interactive dApps, tokenized AR/VR games.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h3>Roadmap</h3>
+    <ul>
+      <li><strong>Phase 1:</strong> MVP with staking and tokenization.</li>
+      <li><strong>Phase 2:</strong> Flash loans, NFT marketplace launch.</li>
+      <li><strong>Phase 3:</strong> Multimedia integrations.</li>
+      <li><strong>Phase 4:</strong> Global scaling, enterprise onboarding.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h3>Conclusion</h3>
+    <p>
+      This platform redefines what’s possible with blockchain by blending DeFi, NFTs, smart contracts, and multimedia into one secure, scalable, and extensible framework.
+    </p>
+  </section>
+
+  <section>
+    <h3>References</h3>
+    <ul>
+      <li>"Decentralized Finance: On Blockchain and Smart Contracts" - IEEE</li>
+      <li>"NFT Market Trends and Opportunities" - Deloitte Insights</li>
+      <li>"Rust Programming for Blockchain Applications" - O'Reilly Media</li>
+    </ul>
+  </section>
+
+  <div class="footer">
+    © {{ year }} Segura Mgmt. All rights reserved.
+  </div>
+
+</body>
+</html>
+{% endblock %}

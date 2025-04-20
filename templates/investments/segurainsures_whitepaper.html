@@ -1,0 +1,90 @@
+{% extends "components/base.html" %}
+{% load static %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SeguraInsures Whitepaper</title>
+  <style>
+    body { font-family: Arial, sans-serif; line-height: 1.6; margin: 40px; background: #f9f9f9; color: #333; }
+    h1, h2, h3 { color: #2c3e50; }
+    h1 { border-bottom: 2px solid #2c3e50; padding-bottom: 10px; }
+    .section { margin-bottom: 40px; }
+    ul { padding-left: 20px; }
+  </style>
+</head>
+<body>
+
+  <h1>SeguraInsures Whitepaper</h1>
+
+  <div class="section">
+    <h2>Executive Summary</h2>
+    <p>SeguraInsures is a revolutionary insurance infrastructure designed to bridge traditional insurance products with blockchain-backed validation and transparency. As part of the Segura Mgmt ecosystem, SeguraInsures enables users to access, purchase, and verify insurance contracts securely via decentralized technology.</p>
+  </div>
+
+  <div class="section">
+    <h2>Platform Overview</h2>
+    <p>SeguraInsures offers an intuitive digital experience for both insurance purchasers and providers. By leveraging a hybrid model, we combine blockchain-based smart contracts for immutability with traditional policy underwriting and claims processing for real-world applicability.</p>
+  </div>
+
+  <div class="section">
+    <h2>Core Features</h2>
+    <ul>
+      <li><strong>Smart Contracts:</strong> Automate policy issuance, verification, and settlement.</li>
+      <li><strong>KYC/AML Compliance:</strong> Integrated regulatory screening and identity validation.</li>
+      <li><strong>Policy Marketplace:</strong> Access life, health, and property insurance via a secure digital platform.</li>
+      <li><strong>Blockchain Audit Trail:</strong> Immutable and transparent record of all transactions and claims.</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>Architecture</h2>
+    <p>SeguraInsures uses a layered infrastructure with a Django-based backend, smart contracts (Solidity), and PostgreSQL/Blockchain hybrid storage. Our system is modular to accommodate integration with multiple insurance carriers and regulatory bodies.</p>
+  </div>
+
+  <div class="section">
+    <h2>Token Integration</h2>
+    <p>While SeguraInsures is not directly tied to the SSS Token (SeguraSafeSwap), the platform can integrate with the token economy to offer discounts, voting rights on insurance governance, and staking pools for coverage liquidity.</p>
+  </div>
+
+  <div class="section">
+    <h2>Business Model</h2>
+    <ul>
+      <li>Commission from policies sold</li>
+      <li>Licensing platform to brokers and providers</li>
+      <li>Premium verification-as-a-service (VaaS) fees</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>Roadmap</h2>
+    <ul>
+      <li><strong>Q2 2025:</strong> Pilot life insurance products</li>
+      <li><strong>Q3 2025:</strong> Integration with smart contract oracles for policy verification</li>
+      <li><strong>Q4 2025:</strong> Multi-state compliance and scaling to mortgage and property insurance</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>Governance and Compliance</h2>
+    <p>SeguraInsures abides by local insurance laws, with licensed representatives and compliance protocols for each jurisdiction. Governance will eventually be token-influenced through the SSS DAO.</p>
+  </div>
+
+  <div class="section">
+    <h2>Team</h2>
+    <p>Led by Brennen Segura, a seasoned insurance claims producer and innovator in blockchain applications for financial services. Our advisory board includes legal, actuarial, and blockchain security professionals.</p>
+  </div>
+
+  <div class="section">
+    <h2>Contact</h2>
+    <p>Email: brennen@seguramgmt.com</p>
+    <p>GitHub: <a href="https://github.com/bps1980" target="_blank">bps1980</a></p>
+  </div>
+
+</body>
+</html>
+
+{% endblock %}

@@ -1,0 +1,84 @@
+{% extends "components/base.html" %}
+{% load static %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AR Parks App - Pitch Deck | Segura Mgmt</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; padding: 2rem; background: #f4f4f4; }
+    .container { max-width: 900px; margin: auto; background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+    h1, h2, h3 { color: #2c3e50; }
+    ul { padding-left: 20px; }
+    .highlight { color: #2980b9; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Segura Mgmt Presents: AR Parks App</h1>
+    <h2>Augmented Reality Experiences for National Parks</h2>
+
+    <h3>Problem</h3>
+    <p>Traditional park visits are passive, lack engaging information delivery, and miss opportunities to inspire digital-native generations.</p>
+
+    <h3>Solution</h3>
+    <p>The <span class="highlight">AR Parks App</span> delivers immersive augmented reality (AR) experiences directly through visitors' smartphones, overlaying digital content onto real-world park environments.</p>
+
+    <h3>Key Features</h3>
+    <ul>
+      <li>AR Wildlife Guide (real-time species overlays)</li>
+      <li>3D Historical Reconstructions</li>
+      <li>Interactive Hiking Maps</li>
+      <li>Educational Mini-Games for Children</li>
+      <li>AR Selfie Spots with Park-Themed Filters</li>
+    </ul>
+
+    <h3>Market Opportunity</h3>
+    <ul>
+      <li>Over 330 million national park visits annually in the U.S. alone</li>
+      <li>Rising adoption of mobile AR applications</li>
+      <li>Government & tourism grant opportunities</li>
+    </ul>
+
+    <h3>Revenue Model</h3>
+    <ul>
+      <li>Freemium access + premium content upgrades</li>
+      <li>National park commissions or partnerships</li>
+      <li>Sponsorships from outdoor brands</li>
+      <li>Merch sales through in-app store</li>
+    </ul>
+
+    <h3>Technology Stack</h3>
+    <ul>
+      <li>Unity + AR Foundation</li>
+      <li>Geolocation APIs</li>
+      <li>Cloud Anchors & 3D Object Recognition</li>
+      <li>Firebase for backend user/session management</li>
+    </ul>
+
+    <h3>Current Stage</h3>
+    <ul>
+      <li>Prototype complete</li>
+      <li>User testing conducted in 2 parks</li>
+      <li>Seeking funding to scale to 10+ parks</li>
+    </ul>
+
+    <h3>Team</h3>
+    <ul>
+      <li><strong>Brennen Segura</strong> – Founder / AR Visionary</li>
+      <li><strong>Developer Team</strong> – Unity + UX Designers</li>
+    </ul>
+
+    <h3>Ask</h3>
+    <p>We are seeking <span class="highlight">$250,000</span> in seed funding to expand the platform across parks nationwide and support strategic partnerships.</p>
+
+    <h3>Contact</h3>
+    <p>Email: brennen@seguramgmt.com<br />LinkedIn: linkedin.com/in/brennensegura</p>
+  </div>
+</body>
+</html>
+
+{% endblock %}

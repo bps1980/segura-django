@@ -1,0 +1,22 @@
+{% extends "components/base.html" %}
+{% block content %}
+<h1>All KYC Submissions</h1>
+<table class="table">
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Status</th>
+      <th>Submitted At</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for submission in submissions %}
+      <tr>
+        <td>{{ submission.user }}</td>
+        <td>{{ submission.status }}</td>
+        <td>{{ submission.submitted_at }}</td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

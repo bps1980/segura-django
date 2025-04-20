@@ -1,0 +1,21 @@
+{% extends "components/base.html" %}
+{% block content %}
+  <h2>KYC Submission</h2>
+
+  {% if existing %}
+    <p><strong>Status:</strong> {{ existing.status|title }}</p>
+    {% if existing.id_document %}
+      <p><strong>ID Document:</strong><br><img src="{{ existing.id_document.url }}" width="200"></p>
+    {% endif %}
+    {% if existing.selfie %}
+      <p><strong>Selfie:</strong><br><img src="{{ existing.selfie.url }}" width="200"></p>
+    {% endif %}
+    <p><strong>Notes:</strong> {{ existing.notes }}</p>
+  {% endif %}
+
+  <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Submit</button>
+  </form>
+{% endblock %}

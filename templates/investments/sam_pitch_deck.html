@@ -1,0 +1,122 @@
+{% extends "components/base.html" %}
+{% load static %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SAM.gov Tools – Pitch Deck | Segura Mgmt</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 2rem;
+      background-color: #ffffff;
+      color: #222;
+      line-height: 1.6;
+    }
+    h1, h2, h3 {
+      color: #003366;
+    }
+    h1 {
+      border-bottom: 2px solid #ccc;
+      padding-bottom: 0.5rem;
+    }
+    .section {
+      margin-bottom: 2rem;
+    }
+    ul {
+      margin-left: 1.5rem;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>SAM.gov Tools – Pitch Deck</h1>
+  <p><strong>Company:</strong> Segura Mgmt Services, LLC</p>
+  <p><strong>Product:</strong> SAM.gov Automation Platform</p>
+
+  <div class="section">
+    <h2>Overview</h2>
+    <p>
+      The SAM.gov Tools platform streamlines federal opportunity monitoring, auto-fills common proposal data, and integrates smart filtering for NAICS codes and set-aside types. Designed for government contractors, our tools save hours of manual searching and documentation.
+    </p>
+  </div>
+
+  <div class="section">
+    <h2>Pain Points Solved</h2>
+    <ul>
+      <li>Manual proposal matching and filtering by NAICS</li>
+      <li>Repeated data entry across submissions</li>
+      <li>Tracking Sources Sought, RFIs, RFPs manually</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>Core Features</h2>
+    <ul>
+      <li>Auto-scraper for <code>sam.gov</code> and <code>ebuy.gsa.gov</code></li>
+      <li>Real-time notifications by NAICS, keywords, set-aside</li>
+      <li>Pre-filled PDF and DOCX templates for common forms</li>
+      <li>Contractor profile builder for faster proposal submissions</li>
+      <li>Integrated proposal storage and email submission support</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>Technology Stack</h2>
+    <ul>
+      <li><strong>Frontend:</strong> Django templates or React (optional)</li>
+      <li><strong>Backend:</strong> Python / Django, SQLite or PostgreSQL</li>
+      <li><strong>PDF Engine:</strong> ReportLab + docx + PyMuPDF</li>
+      <li><strong>Email:</strong> SMTP with DKIM + logging</li>
+      <li><strong>Cloud Deploy:</strong> AWS EC2 or Heroku for MVP</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>Market Opportunity</h2>
+    <p>
+      With over <strong>650,000 contractors</strong> registered in SAM.gov and hundreds of new opportunities posted daily, there’s significant demand for time-saving solutions that give vendors a competitive edge.
+    </p>
+  </div>
+
+  <div class="section">
+    <h2>Revenue Model</h2>
+    <ul>
+      <li><strong>Subscription:</strong> $49–$149/month per user</li>
+      <li><strong>Custom Branding:</strong> White-labeled toolkits for partners</li>
+      <li><strong>Bulk Access:</strong> Multi-seat licensing for large firms</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>Roadmap</h2>
+    <ul>
+      <li>✔️ Phase I: Working MVP and form generation (complete)</li>
+      <li>🚧 Phase II: AI match scoring and win-rate prediction (in progress)</li>
+      <li>🚀 Phase III: Integrations with beta.gov, GSA Schedule, DoD portals</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>Ask</h2>
+    <p>
+      We are seeking <strong>$250,000 – $450,000</strong> to finalize platform development, integrate data APIs, and launch a marketing campaign to reach prime contractors and small business vendors.
+    </p>
+  </div>
+
+  <div class="section">
+    <h2>Contact</h2>
+    <p>
+      <strong>Lead:</strong> Brennen Segura<br>
+      <strong>Email:</strong> brennen@seguramgmt.com<br>
+      <strong>Website:</strong> <a href="https://seguramgmt.com" target="_blank">https://seguramgmt.com</a>
+    </p>
+  </div>
+
+</body>
+</html>
+
+{% endblock %}

@@ -1,0 +1,105 @@
+{% extends 'components/base.html' %}
+{% block content %}
+
+<style>
+    .agreement-container {
+        max-width: 800px;
+        margin: 0 auto;
+        font-family: 'Georgia', serif;
+        line-height: 1.6;
+        background: #fff;
+        padding: 40px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .agreement-title {
+        text-align: center;
+        font-size: 28px;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+
+    .company-header {
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+    .company-header h2 {
+        margin: 0;
+        font-size: 24px;
+    }
+
+    .company-header small {
+        color: #777;
+    }
+
+    .agreement-section {
+        margin-bottom: 30px;
+    }
+
+    .agreement-label {
+        font-weight: bold;
+    }
+
+    .signature-line {
+        margin-top: 40px;
+        width: 100%;
+        border-top: 1px solid #000;
+        height: 2px;
+    }
+
+    .signature-section {
+        margin-top: 60px;
+    }
+
+    .print-btn {
+        margin-top: 30px;
+        text-align: right;
+    }
+</style>
+
+<div class="agreement-container">
+
+    <!-- Company Branding -->
+    <div class="company-header">
+        <h2>Segura Mgmt</h2>
+        <small>Venture Investments & Portfolio Management</small>
+    </div>
+
+    <hr>
+
+    <div class="agreement-title">Investment Subscription Agreement</div>
+
+    <div class="agreement-section">
+        <p><span class="agreement-label">Date:</span> {{ agreement.date|default:"_________" }}</p>
+        <p><span class="agreement-label">Investor Name:</span> {{ user.get_full_name|default:"_________" }}</p>
+        <p><span class="agreement-label">Project:</span> {{ investment.project|default:"_________" }}</p>
+        <p><span class="agreement-label">Amount:</span> ${{ investment.amount|default:"_________" }}</p>
+    </div>
+
+    <div class="agreement-section">
+        <p>This Investment Agreement (“Agreement”) is entered into between the Investor and <strong>Segura Mgmt</strong>, a venture portfolio management company, in accordance with the terms outlined below.</p>
+    </div>
+
+    <div class="agreement-section">
+        <p><span class="agreement-label">Project Description:</span> {{ investment.description|default:"_________" }}</p>
+        <p><span class="agreement-label">Investment Stage:</span> {{ investment.stage|default:"_________" }}</p>
+        <p><span class="agreement-label">Payment Method:</span> {{ investment.payment_method|default:"_________" }}</p>
+    </div>
+
+    <div class="agreement-section">
+        <p>By signing this agreement, the Investor acknowledges receipt and review of the Offering Memorandum and agrees to be bound by the terms herein. This investment is subject to the terms and conditions as disclosed in the legal documents, regulatory compliance materials, and related risk disclosures.</p>
+    </div>
+
+    <div class="signature-section">
+        <p class="agreement-label">Investor Signature:</p>
+        <div class="signature-line"></div>
+        <p><span class="agreement-label">Name:</span> {{ user.get_full_name|default:"_________" }}</p>
+    </div>
+
+    <div class="print-btn">
+        <button onclick="window.print()" class="btn btn-outline-secondary">Print / Save as PDF</button>
+    </div>
+</div>
+
+{% endblock %}

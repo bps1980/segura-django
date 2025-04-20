@@ -1,0 +1,56 @@
+{% extends 'components/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container py-5">
+  <div class="row">
+    <div class="col-lg-6">
+      <img src="{{ project.image_url }}" class="img-fluid rounded mb-4" alt="{{ project.title }}">
+    </div>
+    <div class="col-lg-6">
+      <h1 class="fw-bold">{{ project.title }}</h1>
+      <p class="text-muted">{{ project.subtitle }}</p>
+      <h4 class="text-primary fw-semibold">
+        ${{ project.funding_min|floatformat:0 }} – ${{ project.funding_max|floatformat:0 }}
+      </h4>
+      <div class="mt-3">
+        <a href="#modaldemo8" class="btn btn-lg btn-primary" data-bs-toggle="modal">
+          💸 Invest Now
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <h5 class="mt-4">Funding Progress</h5>
+<div class="progress">
+  <div class="progress-bar" role="progressbar"
+       style="width: {{ project.funding_progress_percent|floatformat:0 }}%;"
+       aria-valuenow="{{ project.funding_progress_percent|floatformat:0 }}" aria-valuemin="0" aria-valuemax="100">
+    {{ project.funding_progress_percent|floatformat:0 }}%
+  </div>
+</div>
+
+<p><strong>Goal:</strong> ${{ project.total_raised|floatformat:0 }} / ${{ project.funding_max|floatformat:0 }}</p>
+
+  <hr class="my-5">
+
+  <div class="row">
+    <div class="col-lg-12">
+      <h3 class="mb-3">Project Overview</h3>
+      <p>{{ project.description|linebreaks }}</p>
+
+      {% if project.whitepaper_url %}
+      <a href="{{ project.whitepaper_url }}" class="btn btn-outline-secondary mt-3" target="_blank">
+        📄 View Whitepaper
+      </a>
+      {% endif %}
+
+      {% if project.pitch_deck_url %}
+      <a href="{{ project.pitch_deck_url }}" class="btn btn-outline-secondary mt-3 ms-2" target="_blank">
+        📊 View Pitch Deck
+      </a>
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% endblock %}

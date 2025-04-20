@@ -1,0 +1,54 @@
+{% extends 'components/custom-base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container-lg">
+    <div class="row justify-content-center align-items-center authentication authentication-basic h-100">
+        <div class="col-xxl-4 col-xl-5 col-lg-5 col-md-6 col-sm-8 col-12">
+            <div class="my-5 d-flex justify-content-center">
+                <a href="{% url 'dashboard_home' %}">
+                    <img src="{% static 'assets/images/brand-logos/desktop-logo.png'%}" alt="logo" class="desktop-logo">
+                    <img src="{% static 'assets/images/brand-logos/desktop-dark.png'%}" alt="logo" class="desktop-dark">
+                </a>
+            </div>
+
+            <div class="card custom-card">
+                <div class="card-body p-5">
+                    <p class="h5 fw-semibold mb-2 text-center">🔐 Verify Your Account</p>
+                    <p class="mb-4 text-muted op-7 fw-normal text-center">Enter the 4-digit code sent to your email.</p>
+
+                    <form method="post" class="text-center">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            {{ form.code.label_tag }}
+                            {{ form.code }}
+                        </div>
+
+                        {% if messages %}
+                            {% for message in messages %}
+                                <div class="alert alert-danger">{{ message }}</div>
+                            {% endfor %}
+                        {% endif %}
+
+                        <button type="submit" class="btn btn-lg btn-primary w-100">Verify</button>
+                    </form>
+
+                    <div class="text-center mt-3">
+                        <a href="{% url 'send_2fa_code' %}" class="text-primary">Resend Code</a>
+                    </div>
+
+                    <div class="text-center">
+                        <p class="fs-12 text-danger mt-3 mb-0">
+                            <sup><i class="ri-asterisk"></i></sup>Don't share the verification code with anyone!
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'assets/libs/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+{% endblock %}

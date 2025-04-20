@@ -1,0 +1,63 @@
+{% extends 'components/base.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+    .certificate-wrapper {
+        max-width: 850px;
+        margin: 0 auto;
+        padding: 40px;
+        border: 2px solid #d6d6d6;
+        background: #fff;
+        box-shadow: 0 0 10px rgba(0,0,0,0.06);
+        font-family: 'Georgia', serif;
+        text-align: center;
+    }
+
+    .certificate-title {
+        font-size: 28px;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
+    .seal {
+        display: inline-block;
+        margin-top: 40px;
+        padding: 12px 25px;
+        background: #6f42c1;
+        color: white;
+        font-weight: bold;
+        border-radius: 50%;
+        font-size: 18px;
+        border: 3px solid #fff;
+        box-shadow: 0 0 0 3px #6f42c1;
+    }
+
+    .print-btn {
+        margin-top: 30px;
+    }
+
+    .meta {
+        color: #555;
+    }
+</style>
+
+<div class="container mt-5">
+  <div class="certificate-wrapper">
+    <div class="certificate-title">Investor Certificate of Participation</div>
+    <p class="lead mt-2">This certifies that</p>
+    <h3 class="fw-bold">{{ user.get_full_name }}</h3>
+    <p class="lead">has officially invested in</p>
+    <h4 class="fw-semibold">{{ investment_project }}</h4>
+    <p class="meta">Investment Date: {{ payment.created_at }}</p>
+
+    <div class="seal">Segura Mgmt</div>
+
+    <p class="mt-4">This certificate is digitally issued by <strong>Segura Mgmt</strong>.</p>
+
+    <div class="print-btn">
+      <button onclick="window.print()" class="btn btn-outline-secondary">Print / Save as PDF</button>
+    </div>
+  </div>
+</div>
+{% endblock %}
