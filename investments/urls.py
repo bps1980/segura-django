@@ -39,4 +39,5 @@ urlpatterns = [
     path('segurafinance/pitch-deck/', views.segurafinance_pitch_deck, name='segurafinance_pitch_deck'),
     path('project/<int:project_id>/', views.project_detail, name='project_detail'),
     path('toggle-favorite/<int:project_id>/', views.toggle_favorite, name='toggle_favorite'),
+    path('create-investment/', views.create_investment_then_stripe, name='create_investment'),
 ]

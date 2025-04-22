@@ -22,6 +22,7 @@ from dotenv import load_dotenv
 from .models import Project  # replace with your actual model name
 from .models import Investment, Payment, Favorite
 from investments.models import Favorite
+from django.views.decorators.http import require_POST
 # Set your Stripe secret key
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
@@ -299,3 +300,31 @@ def dashboard(request):
 def stripe_checkout(request, investment_id):
     # Only allow if user has passed 2FA
     ...
+
+@require_POST
+@login_required
+def create_investment_then_stripe(request):
+    data = json.loads(request.body)
+    amount = data.get("amount")
+    project_id = data.get("project_id")
+
+    if not amount or not project_id:
+        return JsonResponse({"error": "Missing amount or project ID"}, status=400)
+
+    try:
+        project = Project.objects.get(id=project_id)
+        profile, _ = InvestorProfile.objects.get_or_create(user=request.user)
+
+        investment = Investment.objects.create(
+            investor=profile,
+            project=project,
+            amount=amount,
+            payment_method="stripe"  # You can make this dynamic later if needed
+        )
+
+        return JsonResponse({
+            "redirect_url": f"/investments/stripe/checkout/{investment.id}/"
+        })
+
+    except Project.DoesNotExist:
+        return JsonResponse({"error": "Project not found"}, status=404)

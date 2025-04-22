@@ -1,69 +1,127 @@
 {% load static %}
-
 <!-- Investment Modal -->
 <div class="modal fade" id="modaldemo8" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content p-4">
-        <div class="modal-header">
-          <h5 class="modal-title fw-semibold">Invest in a Project</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-  
-        <div class="modal-body">
-          <form id="investmentForm">
-            <div class="mb-3">
-              <label class="form-label">Select a Project</label>
-              <select id="selectedProjectId" class="form-select" required>
-                <option value="">-- Choose Project --</option>
-                <option value="1">SeguraSafeSwap</option>
-                <option value="2">CajunSea Goods</option>
-                <option value="3">MDAV</option>
-                <option value="4">DAD Blockchain</option>
-                <option value="5">GovTech Proposal Engine</option>
-                <option value="6">HFT Bot Department</option>
-                <option value="7">AI Chat Assistant</option>
-                <option value="8">AR Parks App</option>
-                <option value="9">NGA Raster Proposal</option>
-                <option value="10">Xactimate Automation</option>
-                <option value="11">SAM.gov Tools</option>
-                <option value="12">SeguraFinance</option>
-                <option value="13">SeguraInsures</option>
-              </select>
-            </div>
-  
-            <div class="mb-3">
-              <label class="form-label">Investment Amount (USD)</label>
-              <input type="number" id="investmentAmount" class="form-control" placeholder="Enter amount..." required>
-            </div>
-  
-            <div class="d-grid gap-2 mt-4">
-              <button type="button" class="btn btn-primary" onclick="submitStripe()">💳 Pay with Stripe</button>
-              <button type="button" class="btn btn-success" id="plaid-button">🏦 Pay via Bank (Plaid)</button>
-  
-              <form id="coinbase-form" method="POST" action="{% url 'coinbase_charge' %}">
-                {% csrf_token %}
-                <input type="hidden" name="amount" id="coinbaseAmount">
-                <button type="submit" class="btn btn-warning w-100">₿ Pay with Crypto (Coinbase)</button>
-              </form>
-            </div>
-          </form>
-        </div>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content p-4">
+      <div class="modal-header">
+        <h5 class="modal-title fw-semibold">Invest in a Project</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <div class="modal-body">
+        <form id="investmentForm">
+          <div class="mb-3">
+            <label class="form-label">Select a Project</label>
+            <select id="selectedProjectId" class="form-select" required>
+              <option value="">-- Choose Project --</option>
+              <option value="1">SeguraSafeSwap</option>
+              <option value="2">CajunSea Goods</option>
+              <option value="3">MDAV</option>
+              <option value="4">DAD Blockchain</option>
+              <option value="5">GovTech Proposal Engine</option>
+              <option value="6">HFT Bot Department</option>
+              <option value="7">AI Chat Assistant</option>
+              <option value="8">AR Parks App</option>
+              <option value="9">NGA Raster Proposal</option>
+              <option value="10">Xactimate Automation</option>
+              <option value="11">SAM.gov Tools</option>
+              <option value="12">SeguraFinance</option>
+              <option value="13">SeguraInsures</option>
+            </select>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Investment Amount (USD)</label>
+            <input type="number" id="investmentAmount" class="form-control" placeholder="Enter amount..." required>
+          </div>
+
+          <div class="d-grid gap-2 mt-4">
+            <button type="button" class="btn btn-primary" onclick="submitStripe()">💳 Pay with Stripe</button>
+            <button type="button" class="btn btn-success" id="plaid-button">🏦 Pay via Bank (Plaid)</button>
+
+            <form id="coinbase-form" method="POST" action="{% url 'coinbase_charge' %}">
+              {% csrf_token %}
+              <input type="hidden" name="amount" id="coinbaseAmount">
+              <input type="hidden" name="project_id" id="coinbaseProjectId">
+              <button type="submit" class="btn btn-warning w-100">₿ Pay with Crypto (Coinbase)</button>
+            </form>
+          </div>
+        </form>
       </div>
     </div>
-  </div>  
-  <script>
-    document.getElementById("coinbase-form").addEventListener("submit", function (e) {
-      const amount = document.getElementById("investmentAmount").value;
-      const projectId = document.getElementById("selectedProjectId").value;
-    
-      if (!projectId || !amount) {
-        e.preventDefault();
-        alert("Please select a project and enter an amount.");
-        return;
+  </div>
+</div>
+
+<!-- Scripts -->
+<script>
+  // ⬅️ Add this first!
+  function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+      const cookies = document.cookie.split(';');
+      for (let i = 0; i < cookies.length; i++) {
+        const cookie = cookies[i].trim();
+        if (cookie.substring(0, name.length + 1) === name + '=') {
+          cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+          break;
+        }
       }
-    
-      document.getElementById("coinbaseAmount").value = amount;
+    }
+    return cookieValue;
+  }
+
+  function validateForm() {
+    const amount = document.getElementById("investmentAmount").value;
+    const projectId = document.getElementById("selectedProjectId").value;
+
+    if (!projectId || !amount || amount <= 0) {
+      alert("Please select a project and enter a valid amount.");
+      return null;
+    }
+    return { amount, projectId };
+  }
+
+  function submitStripe() {
+    const data = validateForm();
+    if (!data) return;
+  
+    fetch("/investments/create-investment/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "X-CSRFToken": getCookie("csrftoken")
+      },
+      body: JSON.stringify({
+        amount: data.amount,
+        project_id: data.projectId
+      }),
+    })
+    .then(res => res.json())
+    .then(data => {
+      if (data.redirect_url) {
+        window.location.href = data.redirect_url;
+      } else {
+        alert("Something went wrong: " + data.error);
+      }
     });
-    </script>
-    
-<!-- End:: Invest Modal -->
+  }
+
+  document.getElementById("plaid-button").addEventListener("click", function () {
+    const data = validateForm();
+    if (!data) return;
+
+    window.location.href = `/investments/plaid-link/?amount=${data.amount}&project_id=${data.projectId}`;
+  });
+
+  document.getElementById("coinbase-form").addEventListener("submit", function (e) {
+    const data = validateForm();
+    if (!data) {
+      e.preventDefault();
+      return;
+    }
+
+    document.getElementById("coinbaseAmount").value = data.amount;
+    document.getElementById("coinbaseProjectId").value = data.projectId;
+  });
+</script>
+
