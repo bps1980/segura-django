@@ -31,14 +31,14 @@
 
   <!-- Progress Bar -->
   <div class="progress mb-2" style="height: 25px;">
-    <div id="fundingBar" class="progress-bar bg-success"
-     role="progressbar"
-     aria-valuenow="{{ project.funding_progress_percent|floatformat:0 }}"
-     aria-valuemin="0"
-     aria-valuemax="100"
-     style="width: {{ project.funding_progress_percent|floatformat:0 }}%;">
-    {{ project.funding_progress_percent|floatformat:0 }}%
-  </div>
+    <div id="fundingBar"
+         class="progress-bar"
+         role="progressbar"
+         style="width: {{ project.funding_progress_percent|floatformat:0 }}%; background-color: #8B5CF6;"
+         aria-valuemin="0"
+         aria-valuemax="100">
+      {{ project.funding_progress_percent|floatformat:0 }}%
+    </div>
   </div>
 
   <p><strong>Goal:</strong> $
