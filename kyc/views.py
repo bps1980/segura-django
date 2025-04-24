@@ -94,3 +94,6 @@ def all_kyc_submissions(request):
 
 def kyc_required_notice(request):
     return render(request, 'kyc/required_notice.html')
+
+def submit_kyc(request):
+    return render(request, 'kyc/submit_kyc.html')

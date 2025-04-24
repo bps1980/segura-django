@@ -21,8 +21,14 @@ from dotenv import load_dotenv
 
 from .models import Project  # replace with your actual model name
 from .models import Investment, Payment, Favorite
+from .models import InvestorProfile
 from investments.models import Favorite
 from django.views.decorators.http import require_POST
+from decimal import Decimal, InvalidOperation
+from django.urls import reverse
+from .models import KYCSubmission
+from django.contrib.auth.decorators import login_required
+
 # Set your Stripe secret key
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
@@ -50,11 +56,19 @@ def project_detail(request, project_id):
     project = get_object_or_404(Project, pk=project_id)
     return render(request, 'investments/project_detail.html', {'project': project})
 
+@login_required
 def dashboard_view(request):
     user_kyc = KYCSubmission.objects.filter(user=request.user).last()
-    
+
     if not user_kyc or user_kyc.status != 'approved':
-        return redirect('submit_kyc')
+        # Return JSON redirect if it's an AJAX call
+        if request.headers.get('x-requested-with') == 'XMLHttpRequest':
+            return JsonResponse({'redirect_url': reverse('submit_kyc')})
+        else:
+            return redirect('submit_kyc')
+
+    # Otherwise render the normal dashboard
+    return render(request, 'dashboard/index.html')
     
     # ...continue with dashboard logic
 def segurainsures_whitepaper(request):
@@ -243,6 +257,12 @@ def create_link_token(request):
 @csrf_exempt
 def create_coinbase_charge(request):
     if request.method == 'POST':
+        amount = request.POST.get("amount")
+        project_id = request.POST.get("project_id")
+
+        if not amount or not project_id:
+            return HttpResponse("Missing amount or project ID", status=400)
+
         headers = {
             "X-CC-Api-Key": os.getenv("COINBASE_COMMERCE_API_KEY"),
             "X-CC-Version": "2018-03-22",
@@ -250,11 +270,11 @@ def create_coinbase_charge(request):
         }
 
         data = {
-            "name": "Segura Premium Access",
-            "description": "Full access to Segura services",
+            "name": f"Investment in Project #{project_id}",
+            "description": f"Segura investment of ${amount}",
             "pricing_type": "fixed_price",
             "local_price": {
-                "amount": "50.00",
+                "amount": str(amount),
                 "currency": "USD"
             }
         }
@@ -268,6 +288,7 @@ def create_coinbase_charge(request):
             return HttpResponse("Error creating charge", status=500)
 
     return render(request, 'payments/pay.html')
+
 
 @csrf_exempt
 def coinbase_webhook(request):
@@ -295,36 +316,45 @@ def dashboard(request):
         'user_favorites': list(user_favorites),  # convert to list for template usage
     })
 
-@login_required
-@twofa_required
-def stripe_checkout(request, investment_id):
-    # Only allow if user has passed 2FA
-    ...
 
 @require_POST
 @login_required
 def create_investment_then_stripe(request):
-    data = json.loads(request.body)
-    amount = data.get("amount")
-    project_id = data.get("project_id")
+    user = request.user
+    profile = get_object_or_404(InvestorProfile, user=user)
+
+    # KYC check
+    if not KYCSubmission.objects.filter(user=user, status='approved').exists():
+        return redirect('submit_kyc')
+
+    # Agreement check
+    if not profile.agreement_signed:
+        return redirect('investment_agreement')
+
+    # Parse data
+    try:
+        data = json.loads(request.body)
+        amount = Decimal(data.get("amount"))
+        project_id = data.get("project_id")
+    except (TypeError, ValueError, InvalidOperation):
+        return JsonResponse({"error": "Invalid data provided"}, status=400)
 
     if not amount or not project_id:
         return JsonResponse({"error": "Missing amount or project ID"}, status=400)
 
     try:
         project = Project.objects.get(id=project_id)
-        profile, _ = InvestorProfile.objects.get_or_create(user=request.user)
-
-        investment = Investment.objects.create(
-            investor=profile,
-            project=project,
-            amount=amount,
-            payment_method="stripe"  # You can make this dynamic later if needed
-        )
-
-        return JsonResponse({
-            "redirect_url": f"/investments/stripe/checkout/{investment.id}/"
-        })
-
     except Project.DoesNotExist:
         return JsonResponse({"error": "Project not found"}, status=404)
+
+    # Save investment
+    investment = Investment.objects.create(
+        investor=profile,
+        project=project,
+        amount=amount,
+        payment_method="stripe"
+    )
+
+    return JsonResponse({
+        "redirect_url": f"/investments/stripe/checkout/{investment.id}/"
+    })

@@ -38,90 +38,135 @@
           <div class="d-grid gap-2 mt-4">
             <button type="button" class="btn btn-primary" onclick="submitStripe()">💳 Pay with Stripe</button>
             <button type="button" class="btn btn-success" id="plaid-button">🏦 Pay via Bank (Plaid)</button>
-
-            <form id="coinbase-form" method="POST" action="{% url 'coinbase_charge' %}">
-              {% csrf_token %}
-              <input type="hidden" name="amount" id="coinbaseAmount">
-              <input type="hidden" name="project_id" id="coinbaseProjectId">
-              <button type="submit" class="btn btn-warning w-100">₿ Pay with Crypto (Coinbase)</button>
-            </form>
           </div>
+        </form>
+        <form id="coinbase-form" method="POST" action="{% url 'coinbase_charge' %}" onsubmit="return handleCoinbaseSubmit(event);">
+          {% csrf_token %}
+          <input type="hidden" name="amount" id="coinbaseAmount">
+          <input type="hidden" name="project_id" id="coinbaseProjectId">
+          <button type="submit" class="btn btn-warning w-100">₿ Pay with Crypto (Coinbase)</button>
         </form>
       </div>
     </div>
   </div>
 </div>
 
-<!-- Scripts -->
-<script>
-  // ⬅️ Add this first!
-  function getCookie(name) {
-    let cookieValue = null;
-    if (document.cookie && document.cookie !== '') {
-      const cookies = document.cookie.split(';');
-      for (let i = 0; i < cookies.length; i++) {
-        const cookie = cookies[i].trim();
-        if (cookie.substring(0, name.length + 1) === name + '=') {
-          cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-          break;
+<!-- ✅ Include this outside the <script> tag -->
+  <script src="https://cdn.plaid.com/link/v2/stable/link-initialize.js"></script>
+
+  <script>
+    function getCookie(name) {
+      let cookieValue = null;
+      if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+          const cookie = cookies[i].trim();
+          if (cookie.substring(0, name.length + 1) === name + '=') {
+            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+            break;
+          }
         }
       }
+      return cookieValue;
     }
-    return cookieValue;
-  }
-
-  function validateForm() {
-    const amount = document.getElementById("investmentAmount").value;
-    const projectId = document.getElementById("selectedProjectId").value;
-
-    if (!projectId || !amount || amount <= 0) {
-      alert("Please select a project and enter a valid amount.");
-      return null;
-    }
-    return { amount, projectId };
-  }
-
-  function submitStripe() {
-    const data = validateForm();
-    if (!data) return;
   
-    fetch("/investments/create-investment/", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "X-CSRFToken": getCookie("csrftoken")
-      },
-      body: JSON.stringify({
-        amount: data.amount,
-        project_id: data.projectId
-      }),
-    })
-    .then(res => res.json())
-    .then(data => {
-      if (data.redirect_url) {
-        window.location.href = data.redirect_url;
-      } else {
-        alert("Something went wrong: " + data.error);
+    function validateForm() {
+      const amount = document.getElementById("investmentAmount").value;
+      const projectId = document.getElementById("selectedProjectId").value;
+  
+      if (!projectId || !amount || amount <= 0) {
+        alert("Please select a project and enter a valid amount.");
+        return null;
       }
-    });
-  }
-
-  document.getElementById("plaid-button").addEventListener("click", function () {
-    const data = validateForm();
-    if (!data) return;
-
-    window.location.href = `/investments/plaid-link/?amount=${data.amount}&project_id=${data.projectId}`;
-  });
-
-  document.getElementById("coinbase-form").addEventListener("submit", function (e) {
-    const data = validateForm();
-    if (!data) {
-      e.preventDefault();
-      return;
+      return { amount, projectId };
+    }
+  
+    // ✅ Stripe function stays OUTSIDE
+    function submitStripe() {
+      const data = validateForm();
+      if (!data) return;
+  
+      fetch("/investments/create-investment/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "X-CSRFToken": getCookie("csrftoken")
+        },
+        body: JSON.stringify({
+          amount: data.amount,
+          project_id: data.projectId
+        }),
+      })
+      .then(res => res.json())
+      .then(data => {
+        if (data.redirect_url) {
+          window.location.href = data.redirect_url;
+        } else {
+          alert("Something went wrong: " + data.error);
+        }
+      })
+      .catch(err => {
+        console.error("Stripe error:", err);
+      });
     }
 
-    document.getElementById("coinbaseAmount").value = data.amount;
-    document.getElementById("coinbaseProjectId").value = data.projectId;
-  });
-</script>
-
+    function handleCoinbaseSubmit(e) {
+      const data = validateForm();
+      if (!data) {
+        e.preventDefault();  // prevent form from submitting
+        return false;
+      }
+    
+      document.getElementById("coinbaseAmount").value = data.amount;
+      document.getElementById("coinbaseProjectId").value = data.projectId;
+      return true; // allow form to continue submitting
+    }
+  
+    // ✅ Plaid + Coinbase inside DOMContentLoaded
+    document.addEventListener("DOMContentLoaded", function () {
+      document.getElementById("plaid-button").addEventListener("click", function () {
+        const data = validateForm();
+        if (!data) return;
+  
+        fetch(`/investments/plaid/link-token/?amount=${data.amount}&project_id=${data.projectId}`)
+          .then(res => res.json())
+          .then(data => {
+            console.log("Launching Plaid with token:", data.link_token);
+            const handler = Plaid.create({
+              token: data.link_token,
+              onSuccess: function(public_token, metadata) {
+                fetch("/investments/plaid/set-access-token/", {
+                  method: "POST",
+                  headers: {
+                    "Content-Type": "application/json",
+                    "X-CSRFToken": getCookie("csrftoken"),
+                  },
+                  body: JSON.stringify({ public_token }),
+                }).then(response => {
+                  if (response.ok) {
+                    alert("✅ Bank linked successfully!");
+                  } else {
+                    alert("❌ Failed to link bank.");
+                  }
+                });
+              },
+              onExit: function(err, metadata) {
+                console.warn("Plaid exited:", err || metadata);
+              },
+            });
+            handler.open();
+          });
+      });
+  
+      //document.getElementById("coinbase-form").addEventListener("submit", function (e) {
+      //  const data = validateForm();
+      //  if (!data) {
+      //    e.preventDefault();
+      //    return;
+      //  }
+      //  document.getElementById("coinbaseAmount").value = data.amount;
+      //  document.getElementById("coinbaseProjectId").value = data.projectId;
+      //});
+    });
+  </script>
+  

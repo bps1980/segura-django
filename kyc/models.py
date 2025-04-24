@@ -8,7 +8,7 @@ User = get_user_model()
 
 class KYCSubmission(models.Model):
     session_id = models.CharField(max_length=255, unique=True)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='kyc_submissions')
     full_name = models.CharField(max_length=255)
     date_of_birth = models.DateField()
     address = models.TextField()

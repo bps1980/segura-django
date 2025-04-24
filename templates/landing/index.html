@@ -307,9 +307,19 @@
                             </p>
 
                             <div class="text-center mb-4">
-                                <a href="#modaldemo8" class="btn btn-lg btn-primary" data-bs-effect="effect-slide-in-right" data-bs-toggle="modal">
-                                    💸 Invest Now
-                                </a>
+                                {% if user.is_authenticated %}
+                                    {% with kyc=user.kycsubmission_set.last %}
+                                        {% if not kyc or kyc.status != 'approved' %}
+                                        <a href="{% url 'submit_kyc' %}" class="btn btn-lg btn-primary">💸 Invest Now</a>
+                                        {% elif not user.investorprofile.agreement_signed %}
+                                        <a href="{% url 'investment_agreement' %}" class="btn btn-lg btn-primary">💸 Invest Now</a>
+                                        {% else %}
+                                        <a href="#modaldemo8" class="btn btn-lg btn-primary" data-bs-toggle="modal">💸 Invest Now</a>
+                                        {% endif %}
+                                    {% endwith %}
+                                    {% else %}
+                                    <a href="{% url 'register' %}?next={{ request.path }}" class="btn btn-lg btn-primary">💸 Invest Now</a>
+                                    {% endif %}
                             </div>
 
                             <!-- Render in rows of 3 -->
@@ -349,9 +359,20 @@
                             {% endfor %}
 
                             <div class="text-center mt-4 mb-0">
-                                <a href="#modaldemo8" class="btn btn-lg btn-primary" data-bs-effect="effect-slide-in-right" data-bs-toggle="modal">
-                                    💸 Invest Now
-                                </a>
+                                {% if user.is_authenticated %}
+                                    {% with kyc=user.kycsubmission_set.last %}
+                                        {% if not kyc or kyc.status != 'approved' %}
+                                        <a href="{% url 'submit_kyc' %}" class="btn btn-lg btn-primary">💸 Invest Now</a>
+                                        {% elif not user.investorprofile.agreement_signed %}
+                                        <a href="{% url 'investment_agreement' %}" class="btn btn-lg btn-primary">💸 Invest Now</a>
+                                        {% else %}
+                                        <a href="#modaldemo8" class="btn btn-lg btn-primary" data-bs-toggle="modal">💸 Invest Now</a>
+                                        {% endif %}
+                                    {% endwith %}
+                                    {% else %}
+                                    <a href="{% url 'register' %}?next={{ request.path }}" class="btn btn-lg btn-primary">💸 Invest Now</a>
+                                    {% endif %}
+
                             </div>
 
                             {% include 'investments/modalscloses.html' %}

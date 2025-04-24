@@ -17,6 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from kyc import views  # 👈 This is the missing piece
+from . import views # 👈 This is the missing piece
 from landing import views as landing_views
 
 urlpatterns = [
@@ -25,6 +26,7 @@ urlpatterns = [
     path('accounts/', include('accounts.urls')),  # ← New auth routes
     path('dashboard/', include('dashboard.urls')),  # if you have one
     path('kyc/', include('kyc.urls')),
+    path('submit', views.submit_kyc, name='submit_kyc'),  # 👈 This is the missing piece
     path('admin-view/', views.all_kyc_submissions, name='dashboard_admin_view'),
     path('', landing_views.landing_page_view, name='index'),
     path('kyc-submissions/', views.all_kyc_submissions, name='all_kyc_submissions'),
