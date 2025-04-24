@@ -1,4 +1,4 @@
-{% extends 'dashboard/base.html' %}
+{% extends 'components/base.html' %}
 {% load static %}
 
 {% block content %}
@@ -10,14 +10,41 @@
     <div class="col-lg-6">
       <h1 class="fw-bold">{{ project.title }}</h1>
       <p class="text-muted">{{ project.subtitle }}</p>
-      <h4 class="text-primary fw-semibold">${{ project.funding_min|floatformat:0 }} – ${{ project.funding_max|floatformat:0 }}</h4>
+      <h4 class="text-primary fw-semibold">
+        ${{ project.funding_min|floatformat:0 }} – ${{ project.funding_max|floatformat:0 }}
+      </h4>
       <div class="mt-3">
-        <a href="#modaldemo8" class="btn btn-lg btn-primary" data-bs-toggle="modal" data-bs-effect="effect-slide-in-right">
-          💸 Invest Now
-        </a>
+        {% with kyc=user.kycsubmission_set.last %}
+              {% if not kyc or kyc.status != 'approved' %}
+                <a href="{% url 'start_veriff' %}" class="btn btn-lg btn-primary">💸 Invest Now</a>
+              {% elif not user.investorprofile.agreement_signed %}
+                <a href="{% url 'investment_agreement' %}" class="btn btn-lg btn-primary">💸 Invest Now</a>
+              {% else %}
+                <a href="#modaldemo8" class="btn btn-lg btn-primary" data-bs-effect="effect-slide-in-right" data-bs-toggle="modal">
+                  💸 Invest Now
+                </a>
+              {% endif %}
+            {% endwith %}
       </div>
     </div>
   </div>
+
+  <!-- Progress Bar -->
+  <div class="progress mb-2" style="height: 25px;">
+    <div id="fundingBar" class="progress-bar bg-success"
+     role="progressbar"
+     aria-valuenow="{{ project.funding_progress_percent|floatformat:0 }}"
+     aria-valuemin="0"
+     aria-valuemax="100"
+     style="width: {{ project.funding_progress_percent|floatformat:0 }}%;">
+    {{ project.funding_progress_percent|floatformat:0 }}%
+  </div>
+  </div>
+
+  <p><strong>Goal:</strong> $
+    <span id="raisedAmount">{{ project.amount_raised|floatformat:0 }}</span> /
+    $<span id="fundingGoal">{{ project.funding_goal|floatformat:0 }}</span>
+  </p>
 
   <hr class="my-5">
 
@@ -40,4 +67,32 @@
     </div>
   </div>
 </div>
+
+<!-- jQuery or vanilla JS -->
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    function updateFundingProgress(projectId) {
+      fetch(`/investments/funding-progress/${projectId}/`)
+        .then(response => response.json())
+        .then(data => {
+          const bar = document.getElementById("fundingBar");
+          const raised = document.getElementById("raisedAmount");
+          const goal = document.getElementById("fundingGoal");
+
+          // Update bar
+          bar.style.width = `${data.progress_percent}%`;
+          bar.innerText = `${data.progress_percent}%`;
+
+          // Update amounts
+          raised.innerText = data.amount_raised.toLocaleString();
+          goal.innerText = data.goal.toLocaleString();
+        });
+    }
+
+    // Optional: update every 10 seconds
+    setInterval(() => {
+      updateFundingProgress({{ project.id }});
+    }, 10000);
+  });
+  </script>
 {% endblock %}

@@ -358,3 +358,11 @@ def create_investment_then_stripe(request):
     return JsonResponse({
         "redirect_url": f"/investments/stripe/checkout/{investment.id}/"
     })
+    
+def get_funding_progress(request, project_id):
+    project = Project.objects.get(id=project_id)
+    return JsonResponse({
+        'amount_raised': float(project.amount_raised()),
+        'goal': float(project.funding_goal),
+        'progress_percent': round(project.funding_progress_percent(), 2),
+    })

@@ -40,4 +40,5 @@ urlpatterns = [
     path('project/<int:project_id>/', views.project_detail, name='project_detail'),
     path('toggle-favorite/<int:project_id>/', views.toggle_favorite, name='toggle_favorite'),
     path('create-investment/', views.create_investment_then_stripe, name='create_investment'),
+    path('funding-progress/<int:project_id>/', views.get_funding_progress, name='funding_progress'),
 ]
