@@ -325,7 +325,7 @@ def create_investment_then_stripe(request):
 
     # KYC check
     if not KYCSubmission.objects.filter(user=user, status='approved').exists():
-        return redirect('submit_kyc')
+        return redirect('start_veriff')
 
     # Agreement check
     if not profile.agreement_signed:
