@@ -48,6 +48,7 @@
     "@simonwep/pickr": "^1.8.2",
     "apexcharts": "^3.37.0",
     "bootstrap": "^5.3.0-alpha3",
+    "bootstrap-icons": "^1.11.3",
     "chart.js": "^3.8.0",
     "choices.js": "^9.0.1",
     "cleave.js": "^1.6.0",
