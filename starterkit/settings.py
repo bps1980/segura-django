@@ -184,6 +184,12 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # where collectstatic will 
 MIDDLEWARE.insert(1, "whitenoise.middleware.WhiteNoiseMiddleware")
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
+if DEBUG:
+    STATICFILES_STORAGE = "django.contrib.staticfiles.storage.StaticFilesStorage"
+else:
+    STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+
+
 # Optional: if you have a custom static dir (like 'static') inside your project
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),  # only if you use a 'static/' folder in your project
