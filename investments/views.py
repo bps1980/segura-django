@@ -256,6 +256,7 @@ def create_link_token(request):
     
 @csrf_exempt
 def create_coinbase_charge(request):
+    # KYC check
     if request.method == 'POST':
         amount = request.POST.get("amount")
         project_id = request.POST.get("project_id")

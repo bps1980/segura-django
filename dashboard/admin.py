@@ -1,5 +1,6 @@
 from django.contrib.auth.models import Group, User
 
+
 # Create groups if they don't exist
 Group.objects.get_or_create(name="Employee")
 Group.objects.get_or_create(name="Admin")

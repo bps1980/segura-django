@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: segura-django
+    env: python
+    buildCommand: pip install -r Requirements.txt
+    startCommand: gunicorn starterkit.wsgi:application
+    envVars:
+      - key: DJANGO_SETTINGS_MODULE
+        value: starterkit.settings
+      - key: PYTHON_VERSION
+        value: 3.10

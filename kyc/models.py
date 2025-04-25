@@ -1,13 +1,10 @@
 from django.db import models
-
-# Create your models here.
-from django.db import models
 from django.contrib.auth import get_user_model
 
 User = get_user_model()
 
 class KYCSubmission(models.Model):
-    session_id = models.CharField(max_length=255, unique=True)
+    session_id = models.CharField(max_length=255, unique=True, default="pending-session")
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='kyc_submissions')
     full_name = models.CharField(max_length=255)
     date_of_birth = models.DateField()

@@ -3755,6 +3755,16 @@
   border-color: rgb(var(--light-rgb));
   color: var(--default-text-color);
 }
+.btn-light.fw-semibold {
+  color: #5c5c5c;
+  font-weight: 600;
+  border-radius: 6px;
+  transition: 0.2s ease-in-out;
+}
+.btn-light.fw-semibold:hover {
+  background-color: #f0f0f0;
+  color: #000;
+}
 .btn-light:focus {
   background-color: rgb(var(--light-rgb));
   border-color: rgb(var(--light-rgb));

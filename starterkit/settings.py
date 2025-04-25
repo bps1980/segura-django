@@ -180,6 +180,10 @@ STATIC_URL = '/static/'
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # where collectstatic will put everything
 
+# Whitenoise for static file support
+MIDDLEWARE.insert(1, "whitenoise.middleware.WhiteNoiseMiddleware")
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+
 # Optional: if you have a custom static dir (like 'static') inside your project
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),  # only if you use a 'static/' folder in your project

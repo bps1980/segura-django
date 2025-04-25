@@ -7,3 +7,7 @@ class Certificate(models.Model):
     date_issued = models.DateField()
     signature = models.ImageField(upload_to='signatures/')
     pdf_file = models.FileField(upload_to='certificates/', blank=True)
+
+class Investment(models.Model):
+    agreement_signed = models.BooleanField(default=False)
+    agreement_signed_at = models.DateTimeField(null=True, blank=True)

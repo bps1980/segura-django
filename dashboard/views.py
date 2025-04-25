@@ -11,6 +11,9 @@ from utils.decorators import group_required
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 from utils.decorators import twofa_required
+from django.shortcuts import get_object_or_404
+from dashboard.models import Investment  # 🔁 import your Investment model
+from django.utils import timezone       # 🕒 import timezone for datetime
 
 
 def index(request):
@@ -136,3 +139,21 @@ def stripe_checkout(request, investment_id):
 @twofa_required
 def test_protected_view(request):
     return HttpResponse("✅ You passed 2FA and can access this protected view.")
+
+@login_required
+def investment_agreement_view(request, investment_id):
+    investment = get_object_or_404(Investment, id=investment_id, investor__user=request.user)
+
+    if request.method == 'POST':
+        investment.agreement_signed = True
+        investment.agreement_signed_at = timezone.now()
+        investment.save()
+        return redirect('dashboard')  # or next step (like payment)
+
+    return render(request, 'dashboard/agreements.html', {
+        'investment': investment,
+        'user': request.user,
+        'agreement': {
+            'date': timezone.now().date()
+        }
+    })
