@@ -66,6 +66,7 @@ INSTALLED_APPS = [
     'widget_tweaks',
     'investments',
     'kyc',
+    'django.contrib.humanize',
 ]
 
 MIDDLEWARE = [

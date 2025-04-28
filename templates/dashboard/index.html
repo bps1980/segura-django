@@ -1,5 +1,6 @@
 {% extends 'components/base.html' %}
 {% load static %}
+{% load humanize %}
 
 {% block styles %}
 <!-- Add custom dashboard styles if needed -->
@@ -103,8 +104,23 @@
         <h5 class="fw-semibold">{{ project.title }}</h5>
         <p class="text-muted mb-1">{{ project.subtitle }}</p>
         <p class="fw-semibold text-primary">
-          ${{ project.funding_min|floatformat:0 }} – ${{ project.funding_max|floatformat:0 }}
+          Target:
+          ${{ project.funding_min|intcomma }} – ${{ project.funding_max|intcomma }}
         </p>
+        <div class="progress mb-2" style="height: 15px; background-color: #e9ecef;">
+          <div class="progress-bar"
+              role="progressbar"
+              style="width: {{ project.funding_progress_percent|floatformat:0 }}%; background-color: #8B5CF6;"
+              aria-valuenow="{{ project.funding_progress_percent|floatformat:0 }}"
+              aria-valuemin="0"
+              aria-valuemax="100">
+          </div>
+      </div>
+
+      <!-- Raised -->
+      <p class="text-muted small mb-0">
+          <strong>Raised:</strong> ${{ project.amount_raised|floatformat:0|intcomma }} / ${{ project.funding_goal|floatformat:0|intcomma }}
+      </p>
       </a>
     </div>
   </div>
