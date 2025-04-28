@@ -2,111 +2,110 @@
 {% load static %}
 
 {% block content %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Whitepaper | CajunSea Goods - Segura Mgmt</title>
-  <style>
-    body { font-family: Arial, sans-serif; padding: 2rem; background: #fff; color: #333; line-height: 1.6; }
-    h1, h2, h3 { color: #003366; }
-    h1 { font-size: 2.2rem; }
-    h2 { font-size: 1.6rem; margin-top: 2rem; }
-    h3 { font-size: 1.3rem; margin-top: 1.5rem; }
-    ul { padding-left: 1.5rem; }
-    a { color: #0056b3; text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    .toc { background: #f4f4f4; padding: 1rem; border-left: 4px solid #0056b3; margin-bottom: 2rem; }
-  </style>
-</head>
-<body>
+<div class="container py-5">
+  <div class="text-center mb-5">
+    <h1 class="fw-bold">CajunSea Goods</h1>
+    <p><strong>Published by:</strong> Segura Mgmt</p>
+    <p><strong>Date:</strong> April 2025</p>
+  </div>
 
-<h1>CajunSea Goods</h1>
-<p><strong>Published by:</strong> Segura Mgmt</p>
-<p><strong>Date:</strong> April 2025</p>
+  <div class="mb-5 p-4 bg-light border-start border-4 border-primary">
+    <h2 class="text-primary">Table of Contents</h2>
+    <ul>
+      <li><a href="#intro">1. Introduction</a></li>
+      <li><a href="#vision">2. Vision & Mission</a></li>
+      <li><a href="#platform">3. Platform Overview</a></li>
+      <li><a href="#technology">4. Technology Stack</a></li>
+      <li><a href="#features">5. Core Features</a></li>
+      <li><a href="#tokenomics">6. Tokenomics</a></li>
+      <li><a href="#revenue">7. Revenue Model</a></li>
+      <li><a href="#roadmap">8. Roadmap</a></li>
+      <li><a href="#team">9. Team</a></li>
+      <li><a href="#contact">10. Contact</a></li>
+    </ul>
+  </div>
 
-<div class="toc">
-  <h2>Table of Contents</h2>
-  <ul>
-    <li><a href="#intro">1. Introduction</a></li>
-    <li><a href="#vision">2. Vision & Mission</a></li>
-    <li><a href="#platform">3. Platform Overview</a></li>
-    <li><a href="#technology">4. Technology Stack</a></li>
-    <li><a href="#features">5. Core Features</a></li>
-    <li><a href="#tokenomics">6. Tokenomics</a></li>
-    <li><a href="#revenue">7. Revenue Model</a></li>
-    <li><a href="#roadmap">8. Roadmap</a></li>
-    <li><a href="#team">9. Team</a></li>
-    <li><a href="#contact">10. Contact</a></li>
-  </ul>
+  <section id="intro" class="mb-5">
+    <h2 class="text-primary">1. Introduction</h2>
+    <p><strong>CajunSea Goods</strong> is a decentralized multi-vendor marketplace designed to empower entrepreneurs and retailers through blockchain technology. Unlike traditional platforms, CajunSea emphasizes transparency, low fees, and crypto-native payments for both buyers and sellers.</p>
+  </section>
+
+  <section id="vision" class="mb-5">
+    <h2 class="text-primary">2. Vision & Mission</h2>
+    <p>Our mission is to create the leading decentralized marketplace where local brands meet global customers, powered by secure Web3 infrastructure and trustless smart contracts.</p>
+  </section>
+
+  <section id="platform" class="mb-5">
+    <h2 class="text-primary">3. Platform Overview</h2>
+    <p>CajunSea Goods allows vendors to manage storefronts, list products, and process payments in both fiat and crypto. Every transaction is recorded on-chain for full transparency and accountability.</p>
+  </section>
+
+  <section id="technology" class="mb-5">
+    <h2 class="text-primary">4. Technology Stack</h2>
+    <ul>
+      <li><strong>Frontend:</strong> JavaScript (React/Next.js)</li>
+      <li><strong>Backend:</strong> Python (Django) + Node.js</li>
+      <li><strong>Blockchain:</strong> Solidity smart contracts on Polygon/Ethereum</li>
+      <li><strong>Payments:</strong> Stripe, Plaid, Coinbase Commerce</li>
+      <li><strong>Hosting:</strong> DigitalOcean (Docker + Kubernetes)</li>
+    </ul>
+  </section>
+
+  <section id="features" class="mb-5">
+    <h2 class="text-primary">5. Core Features</h2>
+    <ul>
+      <li>Multi-vendor onboarding with KYC/AML verification</li>
+      <li>Custom storefront management with analytics tools</li>
+      <li>Smart contract-enabled transactions</li>
+      <li>Stablecoin and fiat support integration</li>
+      <li>Affiliate and ambassador reward programs</li>
+    </ul>
+  </section>
+
+  <section id="tokenomics" class="mb-5">
+    <h2 class="text-primary">6. Tokenomics</h2>
+    <p>The CajunSea ecosystem may be powered by the <strong>CJN Token</strong> (subject to final confirmation). Vendors who stake CJN receive discounts, premium placements, and voting rights for platform governance.</p>
+    <ul>
+      <li>40% – Community & Ecosystem Growth</li>
+      <li>25% – Founders & Team (Vested)</li>
+      <li>20% – Strategic Investors</li>
+      <li>10% – Marketing & Partnerships</li>
+      <li>5% – Reserve Fund</li>
+    </ul>
+  </section>
+
+  <section id="revenue" class="mb-5">
+    <h2 class="text-primary">7. Revenue Model</h2>
+    <ul>
+      <li>Transaction Fees: 1.5% per sale</li>
+      <li>Vendor Subscriptions: $29/mo & $99/mo (premium analytics, ads)</li>
+      <li>Paid Ad Placement for storefronts/products</li>
+      <li>Token Utility: Buyback and burn model linked to platform revenue</li>
+    </ul>
+  </section>
+
+  <section id="roadmap" class="mb-5">
+    <h2 class="text-primary">8. Roadmap</h2>
+    <ul>
+      <li><strong>Q2 2025:</strong> MVP Launch with Early Vendor Onboarding</li>
+      <li><strong>Q3 2025:</strong> Launch Crypto Gateway & Token Staking</li>
+      <li><strong>Q4 2025:</strong> Mobile App Launch (iOS & Android)</li>
+      <li><strong>Q1 2026:</strong> Global Expansion + Affiliate Program Rollout</li>
+    </ul>
+  </section>
+
+  <section id="team" class="mb-5">
+    <h2 class="text-primary">9. Team</h2>
+    <p><strong>Brennen Segura</strong> — Founder with extensive experience in marketplaces, blockchain infrastructure, and fintech innovation, backed by a specialized team of developers and blockchain strategists.</p>
+  </section>
+
+  <section id="contact" class="mb-5">
+    <h2 class="text-primary">10. Contact</h2>
+    <ul>
+      <li>Email: <a href="mailto:brennen@seguramgmt.com">brennen@seguramgmt.com</a></li>
+      <li>Website: <a href="https://www.seguramgmt.com" target="_blank">www.seguramgmt.com</a></li>
+      <li>GitHub: <a href="https://github.com/bps1980" target="_blank">github.com/bps1980</a></li>
+    </ul>
+  </section>
 </div>
-
-<h2 id="intro">1. Introduction</h2>
-<p><strong>CajunSea Goods</strong> is a decentralized multi-vendor marketplace designed to empower entrepreneurs and retailers through blockchain. Unlike traditional e-commerce platforms, CajunSea leverages transparency, low fees, and crypto-native payments to bring innovation to both buyers and sellers.</p>
-
-<h2 id="vision">2. Vision & Mission</h2>
-<p>Our mission is to become the premier decentralized marketplace where local brands meet global customers, all powered by Web3 infrastructure. We envision a future where trust is built through smart contracts and vendors operate without middlemen.</p>
-
-<h2 id="platform">3. Platform Overview</h2>
-<p>CajunSea Goods enables vendors to register, manage their storefronts, list products, and process payments in both fiat and crypto. All transactions are logged on the blockchain, ensuring full traceability and trust.</p>
-
-<h2 id="technology">4. Technology Stack</h2>
-<ul>
-  <li><strong>Frontend:</strong> JavaScript (React/Next.js)</li>
-  <li><strong>Backend:</strong> Python (Django) + Node.js</li>
-  <li><strong>Blockchain Layer:</strong> Solidity + Polygon/Ethereum integration</li>
-  <li><strong>Payments:</strong> Stripe, Plaid, Coinbase Commerce</li>
-  <li><strong>Hosting:</strong> DigitalOcean (Docker + Kubernetes)</li>
-</ul>
-
-<h2 id="features">5. Core Features</h2>
-<ul>
-  <li>Multi-vendor onboarding with KYC/AML</li>
-  <li>Custom storefronts and product analytics</li>
-  <li>Smart contract-enabled transactions</li>
-  <li>Stablecoin support and fiat integration</li>
-  <li>Affiliate & Ambassador programs</li>
-</ul>
-
-<h2 id="tokenomics">6. Tokenomics</h2>
-<p>The CajunSea ecosystem is powered by the **CJN Token** (TBD if tokenized). Vendors can stake CJN for reduced fees, premium listing placement, and voting on governance proposals. Token distribution will follow:</p>
-<ul>
-  <li>40%: Community & Ecosystem Growth</li>
-  <li>25%: Founders & Team (Vested)</li>
-  <li>20%: Strategic Investors</li>
-  <li>10%: Marketing & Partnerships</li>
-  <li>5%: Reserve Fund</li>
-</ul>
-
-<h2 id="revenue">7. Revenue Model</h2>
-<ul>
-  <li>Transaction Fee: 1.5% per sale</li>
-  <li>Subscription Plans: $29/month & $99/month (premium analytics, ads)</li>
-  <li>Ad Placement: Promoted storefronts/products</li>
-  <li>Token Utility: Buyback & burn model tied to platform profits</li>
-</ul>
-
-<h2 id="roadmap">8. Roadmap</h2>
-<ul>
-  <li><strong>Q2 2025:</strong> MVP launch with early vendors onboarded</li>
-  <li><strong>Q3 2025:</strong> Crypto payment gateway and staking</li>
-  <li><strong>Q4 2025:</strong> Mobile app release (iOS & Android)</li>
-  <li><strong>Q1 2026:</strong> Global vendor acquisition and affiliate program rollout</li>
-</ul>
-
-<h2 id="team">9. Team</h2>
-<p><strong>Founder:</strong> Brennen Segura – A veteran in marketplaces, blockchain infrastructure, and financial technology. Backed by a growing team of developers and blockchain strategists.</p>
-
-<h2 id="contact">10. Contact</h2>
-<ul>
-  <li>📧 Email: <a href="mailto:brennen@seguramgmt.com">brennen@seguramgmt.com</a></li>
-  <li>🌐 Website: <a href="https://www.seguramgmt.com" target="_blank">www.seguramgmt.com</a></li>
-  <li>💼 GitHub: <a href="https://github.com/bps1980" target="_blank">bps1980</a></li>
-</ul>
-
-</body>
-</html>
-
-
 {% endblock %}

@@ -2,122 +2,105 @@
 {% load static %}
 
 {% block content %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>NGA Raster Proposal – Whitepaper | Segura Mgmt</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      margin: 2rem;
-      background-color: #ffffff;
-      color: #222;
-      line-height: 1.6;
-    }
-    h1, h2, h3 {
-      color: #003366;
-    }
-    h1 {
-      border-bottom: 2px solid #ccc;
-      padding-bottom: 0.5rem;
-    }
-    ul {
-      margin-left: 1.5rem;
-    }
-    code {
-      background-color: #f4f4f4;
-      padding: 2px 6px;
-      border-radius: 4px;
-      font-size: 0.95em;
-    }
-  </style>
-</head>
-<body>
-
-  <h1>NGA Raster Proposal – Whitepaper</h1>
-  <p><strong>Author:</strong> Segura Mgmt Services, LLC</p>
-  <p><strong>Contact:</strong> brennen@seguramgmt.com</p>
-
-  <h2>Executive Summary</h2>
-  <p>
-    The NGA Raster Modernization Whitepaper outlines a forward-thinking plan to replace aging raster data infrastructure within the National Geospatial-Intelligence Agency (NGA). This proposal leverages AI, cloud-native architecture, and open standards to enhance speed, accuracy, and interoperability across geospatial operations.
+<div class="container py-5">
+  <h1 class="display-4 fw-bold text-center mb-4">NGA Raster Proposal – Whitepaper</h1>
+  <p class="lead text-center mb-5">
+    <strong>Author:</strong> Segura Mgmt Services, LLC<br>
+    <strong>Contact:</strong> brennen@seguramgmt.com
   </p>
 
-  <h2>1. Introduction</h2>
-  <p>
-    Raster data is a critical component of the NGA’s mission. However, the legacy systems used to store and process this data are inflexible, inefficient, and prone to data bottlenecks. Our solution offers a robust modernization pathway using AI-powered automation and scalable infrastructure.
-  </p>
+  <section class="my-5">
+    <h2>Executive Summary</h2>
+    <p>
+      The NGA Raster Modernization Whitepaper outlines a forward-thinking plan to replace aging raster data infrastructure within the National Geospatial-Intelligence Agency (NGA). This proposal leverages AI, cloud-native architecture, and open standards to enhance speed, accuracy, and interoperability across geospatial operations.
+    </p>
+  </section>
 
-  <h2>2. Objectives</h2>
-  <ul>
-    <li>Automate raster conversion from CADRG/ECRG into next-gen formats</li>
-    <li>Improve data compression, tagging, and access control</li>
-    <li>Integrate visualization tools with modern web-based UI/UX</li>
-    <li>Ensure scalability and security through modular design</li>
-  </ul>
+  <section class="my-5">
+    <h2>Introduction</h2>
+    <p>
+      Raster data is critical to the NGA’s mission. However, legacy systems for storing and processing this data are inefficient and bottleneck-prone. Our solution proposes AI-powered automation and scalable, modern infrastructure.
+    </p>
+  </section>
 
-  <h2>3. Technical Architecture</h2>
-  <p>
-    The proposed system architecture includes:
-  </p>
-  <ul>
-    <li><strong>Frontend:</strong> Leaflet, CesiumJS, React for visualization</li>
-    <li><strong>Backend:</strong> Django, Python, PostgreSQL with PostGIS</li>
-    <li><strong>Cloud:</strong> AWS GovCloud or Azure Government</li>
-    <li><strong>AI/ML:</strong> TensorFlow for pattern detection and raster classification</li>
-    <li><strong>Raster Stack:</strong> GDAL, MapServer, QGIS plugins</li>
-  </ul>
+  <section class="my-5">
+    <h2>Objectives</h2>
+    <ul>
+      <li>Automate raster conversion from CADRG/ECRG into next-gen formats</li>
+      <li>Enhance compression, tagging, and access control</li>
+      <li>Integrate visualization tools with a modern UI/UX</li>
+      <li>Ensure scalability and modular design for security</li>
+    </ul>
+  </section>
 
-  <h2>4. Core Components</h2>
-  <ul>
-    <li><strong>GeoDec Module:</strong> Decentralized editing for field operatives</li>
-    <li><strong>Accord Compression:</strong> Lossless and lossy intelligent compression algorithms</li>
-    <li><strong>ARM Engine:</strong> Automated Raster Modernization engine for daily ingestion pipelines</li>
-  </ul>
+  <section class="my-5">
+    <h2>Technical Architecture</h2>
+    <ul>
+      <li><strong>Frontend:</strong> Leaflet, CesiumJS, React</li>
+      <li><strong>Backend:</strong> Django, Python, PostgreSQL with PostGIS</li>
+      <li><strong>Cloud:</strong> AWS GovCloud or Azure Government</li>
+      <li><strong>AI/ML:</strong> TensorFlow for pattern detection</li>
+      <li><strong>Raster Stack:</strong> GDAL, MapServer, QGIS plugins</li>
+    </ul>
+  </section>
 
-  <h2>5. AI Automation Strategy</h2>
-  <p>
-    Our AI engine will enable intelligent tagging of raster tiles using supervised models. Feature detection (roads, boundaries, anomalies) will enhance metadata quality, saving analysts hundreds of hours in manual classification.
-  </p>
+  <section class="my-5">
+    <h2>Core Components</h2>
+    <ul>
+      <li><strong>GeoDec Module:</strong> Decentralized field editing</li>
+      <li><strong>Accord Compression:</strong> Intelligent lossless/lossy compression algorithms</li>
+      <li><strong>ARM Engine:</strong> Automated Raster Modernization ingestion pipeline</li>
+    </ul>
+  </section>
 
-  <h2>6. Security Model</h2>
-  <ul>
-    <li>Role-Based Access Control (RBAC)</li>
-    <li>Audit Logs</li>
-    <li>Data encryption at rest and in transit (AES-256)</li>
-    <li>FedRAMP Moderate compliance</li>
-  </ul>
+  <section class="my-5">
+    <h2>AI Automation Strategy</h2>
+    <p>
+      AI engines will intelligently tag raster tiles, detecting features like roads, boundaries, and anomalies, significantly reducing manual classification labor for analysts.
+    </p>
+  </section>
 
-  <h2>7. Integration</h2>
-  <p>
-    The system is compatible with:
-  </p>
-  <ul>
-    <li>Esri ArcGIS</li>
-    <li>OGC-compliant services (WMS, WMTS, WCS)</li>
-    <li>GeoTIFF, JPEG2000, and COG formats</li>
-  </ul>
+  <section class="my-5">
+    <h2>Security Model</h2>
+    <ul>
+      <li>Role-Based Access Control (RBAC)</li>
+      <li>Audit logs</li>
+      <li>Data encryption (AES-256) at rest and in transit</li>
+      <li>FedRAMP Moderate compliance standards</li>
+    </ul>
+  </section>
 
-  <h2>8. Implementation Timeline</h2>
-  <ul>
-    <li><strong>Phase I (3 months):</strong> Architecture, AI prototyping, sample pipeline</li>
-    <li><strong>Phase II (6 months):</strong> Production deployment, security audit, user testing</li>
-  </ul>
+  <section class="my-5">
+    <h2>Integration</h2>
+    <ul>
+      <li>Compatible with Esri ArcGIS</li>
+      <li>Supports OGC services (WMS, WMTS, WCS)</li>
+      <li>Formats: GeoTIFF, JPEG2000, COG</li>
+    </ul>
+  </section>
 
-  <h2>9. Budget Overview</h2>
-  <ul>
-    <li>Phase I: $400,000 – Prototyping, data migration, cloud infra</li>
-    <li>Phase II: $750,000 – Deployment, maintenance, support staff</li>
-  </ul>
+  <section class="my-5">
+    <h2>Implementation Timeline</h2>
+    <ul>
+      <li><strong>Phase I (3 months):</strong> Architecture, AI prototyping, sample pipelines</li>
+      <li><strong>Phase II (6 months):</strong> Production deployment, security audits, user testing</li>
+    </ul>
+  </section>
 
-  <h2>10. Conclusion</h2>
-  <p>
-    With deep technical knowledge in raster processing and NGA frameworks, Segura Mgmt is poised to deliver a high-impact transformation to the NGA’s geospatial capabilities. This modernization will yield faster analysis, improved accuracy, and better decision-making outcomes.
-  </p>
+  <section class="my-5">
+    <h2>Budget Overview</h2>
+    <ul>
+      <li><strong>Phase I:</strong> $400,000 – Prototyping, data migration, cloud infrastructure</li>
+      <li><strong>Phase II:</strong> $750,000 – Full deployment, support staff, maintenance</li>
+    </ul>
+  </section>
 
-</body>
-</html>
+  <section class="my-5">
+    <h2>Conclusion</h2>
+    <p>
+      Segura Mgmt, with deep technical expertise in raster processing and NGA frameworks, is uniquely positioned to lead this modernization effort. Our proposal promises faster analytics, improved data accuracy, and strategic mission support for the NGA.
+    </p>
+  </section>
 
+</div>
 {% endblock %}

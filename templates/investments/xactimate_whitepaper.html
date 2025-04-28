@@ -2,50 +2,20 @@
 {% load static %}
 
 {% block content %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Xactimate Automation Whitepaper | Segura Mgmt</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 2rem;
-      line-height: 1.7;
-      background: #fff;
-      color: #222;
-    }
-    h1, h2 {
-      color: #003366;
-    }
-    h1 {
-      border-bottom: 2px solid #ccc;
-      padding-bottom: 0.3rem;
-    }
-    ul {
-      margin-left: 1.5rem;
-    }
-    .section {
-      margin-bottom: 2rem;
-    }
-  </style>
-</head>
-<body>
+<div class="container py-5">
+  <h1 class="display-4 fw-bold text-center">Xactimate Automation Whitepaper</h1>
+  <p class="text-center text-muted mb-5"><strong>Author:</strong> Segura Mgmt Services, LLC</p>
 
-  <h1>Xactimate Automation Whitepaper</h1>
-  <p><strong>Author:</strong> Segura Mgmt Services, LLC</p>
-
-  <div class="section">
+  <section class="my-5">
     <h2>Abstract</h2>
     <p>
       Xactimate Automation is a proprietary system built to streamline the claim setup process
-      for insurance adjusters. Our solution reduces manual data entry by auto-generating `.esx`
+      for insurance adjusters. Our solution reduces manual data entry by auto-generating <code>.esx</code>
       files from standard declaration pages, enabling quicker deployment and more accurate claims.
     </p>
-  </div>
+  </section>
 
-  <div class="section">
+  <section class="my-5">
     <h2>Problem Statement</h2>
     <p>
       During catastrophic events, adjusters are burdened with high volumes of claims and repetitive
@@ -56,13 +26,13 @@
       <li>Delays in file generation</li>
       <li>Reduced productivity</li>
     </ul>
-  </div>
+  </section>
 
-  <div class="section">
+  <section class="my-5">
     <h2>Proposed Solution</h2>
     <p>
       Our system uses OCR (Optical Character Recognition) and pattern extraction to parse PDF
-      declaration pages and auto-populate Xactimate-ready `.esx` files with the following:
+      declaration pages and auto-populate Xactimate-ready <code>.esx</code> files with:
     </p>
     <ul>
       <li>Policy number</li>
@@ -72,47 +42,47 @@
       <li>Property details</li>
       <li>Coverage A & B limits</li>
     </ul>
-  </div>
+  </section>
 
-  <div class="section">
+  <section class="my-5">
     <h2>System Architecture</h2>
     <ul>
       <li><strong>Frontend:</strong> Django web interface</li>
       <li><strong>Backend:</strong> Python + Pillow + PyPDF2 + Regex</li>
-      <li><strong>Output:</strong> Auto-generated `.esx` file saved to Xactimate local project folder</li>
+      <li><strong>Output:</strong> Auto-generated <code>.esx</code> file saved to Xactimate local project folder</li>
     </ul>
-  </div>
+  </section>
 
-  <div class="section">
+  <section class="my-5">
     <h2>Workflow</h2>
     <ol>
       <li>User uploads the declaration page PDF</li>
       <li>OCR parses the document into text blocks</li>
       <li>Regular expressions identify key data fields</li>
-      <li>Data is validated and saved to an `.esx` file</li>
+      <li>Data is validated and saved to an <code>.esx</code> file</li>
       <li>File is ready for import into Xactimate</li>
     </ol>
-  </div>
+  </section>
 
-  <div class="section">
+  <section class="my-5">
     <h2>Market Application</h2>
     <p>
       With thousands of CAT adjusters and independent firms using Xactimate daily, this tool
       accelerates claim turnaround and simplifies onboarding for new adjusters. It can be licensed
       per firm or offered on a per-file/subscription basis.
     </p>
-  </div>
+  </section>
 
-  <div class="section">
+  <section class="my-5">
     <h2>Security & Compliance</h2>
     <ul>
       <li>All PDFs processed locally – no cloud upload</li>
       <li>No data is stored without user consent</li>
       <li>Complies with HIPAA & PII data protection standards</li>
     </ul>
-  </div>
+  </section>
 
-  <div class="section">
+  <section class="my-5">
     <h2>Future Enhancements</h2>
     <ul>
       <li>Batch PDF processing</li>
@@ -120,18 +90,18 @@
       <li>Cloud version with encrypted storage and download</li>
       <li>AI assistant to check for claim completeness</li>
     </ul>
-  </div>
+  </section>
 
-  <div class="section">
+  <section class="my-5">
     <h2>Conclusion</h2>
     <p>
       Xactimate Automation increases accuracy, reduces workload, and saves time. This innovation
       is positioned to become a critical tool for insurance adjusters and IA firms, especially during
       high-pressure deployment scenarios.
     </p>
-  </div>
+  </section>
 
-  <div class="section">
+  <section class="my-5">
     <h2>Contact</h2>
     <p>
       <strong>Brennen Segura</strong><br>
@@ -139,9 +109,6 @@
       Email: <a href="mailto:brennen@seguramgmt.com">brennen@seguramgmt.com</a><br>
       Website: <a href="https://seguramgmt.com" target="_blank">https://seguramgmt.com</a>
     </p>
-  </div>
-
-</body>
-</html>
-
+  </section>
+</div>
 {% endblock %}

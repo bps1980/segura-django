@@ -2,52 +2,25 @@
 {% load static %}
 
 {% block content %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>HFT Bot Department | Pitch Deck | Segura Mgmt</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 2rem;
-      background-color: #f9f9f9;
-      color: #333;
-      line-height: 1.6;
-    }
-    h1, h2, h3 {
-      color: #005ea2;
-    }
-    .section {
-      margin-bottom: 3rem;
-    }
-    ul {
-      margin-left: 1.5rem;
-    }
-  </style>
-</head>
-<body>
+<div class="container py-5">
+  <h1 class="display-4 fw-bold text-center mb-4">HFT Bot Department</h1>
+  <h2 class="text-center text-primary mb-5">Segura Mgmt – Pitch Deck</h2>
 
-  <h1>HFT Bot Department</h1>
-  <h2>Segura Mgmt – Pitch Deck</h2>
-
-  <div class="section">
+  <div class="section mb-5">
     <h3>1. Introduction</h3>
     <p>
       The HFT Bot Department is a cutting-edge trading initiative developed by Segura Mgmt to capitalize on high-frequency trading opportunities across centralized and decentralized exchanges.
     </p>
   </div>
 
-  <div class="section">
+  <div class="section mb-5">
     <h3>2. Problem</h3>
     <p>
       Manual and latency-prone trading operations fail to capture micro-opportunities. Traders are limited by speed, bias, and emotion.
     </p>
   </div>
 
-  <div class="section">
+  <div class="section mb-5">
     <h3>3. Solution</h3>
     <ul>
       <li>Fully automated bots built using Python and CCXT</li>
@@ -57,7 +30,7 @@
     </ul>
   </div>
 
-  <div class="section">
+  <div class="section mb-5">
     <h3>4. Features</h3>
     <ul>
       <li>Market Making with Take Profit Optimization</li>
@@ -67,7 +40,7 @@
     </ul>
   </div>
 
-  <div class="section">
+  <div class="section mb-5">
     <h3>5. Results</h3>
     <ul>
       <li>Backtested Strategy 1: 177.09% ROI (5 years)</li>
@@ -76,7 +49,7 @@
     </ul>
   </div>
 
-  <div class="section">
+  <div class="section mb-5">
     <h3>6. Business Model</h3>
     <p>
       We plan to raise $1.5M in equity to scale infrastructure, deploy multiple bots, and list a licensed crypto hedge service.
@@ -88,7 +61,7 @@
     </ul>
   </div>
 
-  <div class="section">
+  <div class="section mb-5">
     <h3>7. Team</h3>
     <ul>
       <li>Brennen Segura – Founder, Full-Stack & Blockchain Developer, Algorithm Engineer</li>
@@ -97,7 +70,7 @@
     </ul>
   </div>
 
-  <div class="section">
+  <div class="section mb-5">
     <h3>8. Roadmap</h3>
     <ul>
       <li><strong>Q2 2025:</strong> Finalize 3 production-ready strategies</li>
@@ -107,15 +80,12 @@
     </ul>
   </div>
 
-  <div class="section">
+  <div class="section mb-5">
     <h3>9. Contact</h3>
     <p><strong>Company:</strong> Segura Mgmt</p>
-    <p><strong>Email:</strong> brennen@seguramgmt.com</p>
+    <p><strong>Email:</strong> <a href="mailto:brennen@seguramgmt.com">brennen@seguramgmt.com</a></p>
     <p><strong>GitHub:</strong> <a href="https://github.com/bps1980" target="_blank">github.com/bps1980</a></p>
-    <p><strong>Website:</strong> www.seguramgmt.com</p>
+    <p><strong>Website:</strong> <a href="https://www.seguramgmt.com" target="_blank">www.seguramgmt.com</a></p>
   </div>
-
-</body>
-</html>
-
+</div>
 {% endblock %}

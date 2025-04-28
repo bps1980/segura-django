@@ -2,133 +2,113 @@
 {% load static %}
 
 {% block content %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>AR Parks App - Whitepaper | Segura Mgmt</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>
-        body { font-family: Arial, sans-serif; line-height: 1.6; margin: 2rem; color: #333; }
-        h1, h2, h3 { color: #2c3e50; }
-        h1 { font-size: 2rem; margin-bottom: 0.5rem; }
-        h2 { margin-top: 2rem; }
-        ul { margin-top: 0.5rem; padding-left: 1.5rem; }
-        .toc { background: #f4f4f4; padding: 1rem; border-left: 4px solid #3498db; margin-bottom: 2rem; }
-        .section { margin-bottom: 2.5rem; }
-    </style>
-</head>
-<body>
+<div class="container py-5">
 
-    <h1>Segura Mgmt – AR Parks App (Concept)</h1>
-    <h3>Whitepaper</h3>
+  <div class="text-center mb-5">
+    <h1 class="fw-bold">Segura Mgmt – AR Parks App (Concept)</h1>
+    <h5 class="text-muted">Whitepaper</h5>
+  </div>
 
-    <div class="toc">
-        <strong>Table of Contents</strong>
-        <ul>
-            <li>Introduction</li>
-            <li>Vision and Mission</li>
-            <li>Product Overview</li>
-            <li>Features and Use Cases</li>
-            <li>Technology Stack</li>
-            <li>Development Roadmap</li>
-            <li>Revenue Model</li>
-            <li>Partnership Opportunities</li>
-            <li>Team</li>
-            <li>Contact Information</li>
-        </ul>
-    </div>
+  <div class="mb-5 p-4 bg-light border-start border-primary">
+    <h2 class="text-primary">Table of Contents</h2>
+    <ul>
+      <li>Introduction</li>
+      <li>Vision and Mission</li>
+      <li>Product Overview</li>
+      <li>Features and Use Cases</li>
+      <li>Technology Stack</li>
+      <li>Development Roadmap</li>
+      <li>Revenue Model</li>
+      <li>Partnership Opportunities</li>
+      <li>Team</li>
+      <li>Contact Information</li>
+    </ul>
+  </div>
 
-    <div class="section">
-        <h2>Introduction</h2>
-        <p>The AR Parks App aims to revolutionize how visitors experience National Parks and cultural sites by offering immersive Augmented Reality experiences through a mobile app. By blending physical exploration with digital engagement, AR Parks enhances tourism, education, and conservation awareness.</p>
-    </div>
+  <section class="mb-5">
+    <h2 class="text-primary">Introduction</h2>
+    <p>The AR Parks App revolutionizes how visitors experience National Parks and cultural sites by offering immersive Augmented Reality (AR) interactions. It blends exploration with digital engagement, enhancing tourism, education, and conservation efforts.</p>
+  </section>
 
-    <div class="section">
-        <h2>Vision and Mission</h2>
-        <p>Our vision is to bridge the gap between nature and technology. We aim to provide a modern, educational, and interactive experience for park visitors of all ages while supporting the National Park Service in its mission to protect and promote natural heritage.</p>
-    </div>
+  <section class="mb-5">
+    <h2 class="text-primary">Vision and Mission</h2>
+    <p>Our mission is to bridge nature and technology, providing modern, educational, and interactive experiences for park visitors of all ages while promoting conservation awareness.</p>
+  </section>
 
-    <div class="section">
-        <h2>Product Overview</h2>
-        <p>The AR Parks App provides:
-            <ul>
-                <li>3D overlays of historic landmarks, flora, and fauna</li>
-                <li>Real-time trail and wildlife info</li>
-                <li>Interactive park maps with AR guidance</li>
-                <li>Educational games for children and students</li>
-            </ul>
-        </p>
-    </div>
+  <section class="mb-5">
+    <h2 class="text-primary">Product Overview</h2>
+    <ul>
+      <li>3D overlays of landmarks, flora, and fauna</li>
+      <li>Real-time trail and wildlife information</li>
+      <li>Interactive AR maps and guided navigation</li>
+      <li>Educational games for children and students</li>
+    </ul>
+  </section>
 
-    <div class="section">
-        <h2>Features and Use Cases</h2>
-        <ul>
-            <li><strong>Augmented Historical Tours:</strong> Visitors can view recreations of historic events in their original locations.</li>
-            <li><strong>AR Wildlife Spotting:</strong> Educational overlays highlight animal habitats and conservation facts.</li>
-            <li><strong>Gamified Exploration:</strong> Users can collect AR badges by visiting points of interest.</li>
-            <li><strong>Accessible Mode:</strong> Visual/audio enhancements for disabled visitors.</li>
-        </ul>
-    </div>
+  <section class="mb-5">
+    <h2 class="text-primary">Features and Use Cases</h2>
+    <ul>
+      <li><strong>Augmented Historical Tours:</strong> Recreate historic events at their original locations.</li>
+      <li><strong>AR Wildlife Spotting:</strong> Interactive overlays showcasing animal habitats and conservation facts.</li>
+      <li><strong>Gamified Exploration:</strong> Collect AR badges across points of interest.</li>
+      <li><strong>Accessible Mode:</strong> Enhanced visual/audio features for disabled visitors.</li>
+    </ul>
+  </section>
 
-    <div class="section">
-        <h2>Technology Stack</h2>
-        <ul>
-            <li>Frontend: React Native / Flutter</li>
-            <li>AR Engine: Unity3D + Vuforia / ARKit / ARCore</li>
-            <li>Backend: Django + PostgreSQL</li>
-            <li>Mapping: Mapbox or Google Maps API</li>
-        </ul>
-    </div>
+  <section class="mb-5">
+    <h2 class="text-primary">Technology Stack</h2>
+    <ul>
+      <li>Frontend: React Native or Flutter</li>
+      <li>AR Engine: Unity3D with Vuforia / ARKit / ARCore</li>
+      <li>Backend: Django with PostgreSQL</li>
+      <li>Mapping: Mapbox or Google Maps API</li>
+    </ul>
+  </section>
 
-    <div class="section">
-        <h2>Development Roadmap</h2>
-        <ul>
-            <li>Q2 2025 – MVP for 2 national parks</li>
-            <li>Q3 2025 – Expanded coverage to 10 parks, multilingual support</li>
-            <li>Q4 2025 – Launch educational and donation modules</li>
-            <li>2026 – Government contracts and global expansion</li>
-        </ul>
-    </div>
+  <section class="mb-5">
+    <h2 class="text-primary">Development Roadmap</h2>
+    <ul>
+      <li><strong>Q2 2025:</strong> MVP release covering 2 national parks</li>
+      <li><strong>Q3 2025:</strong> Expansion to 10 parks, add multilingual support</li>
+      <li><strong>Q4 2025:</strong> Launch educational modules and donation tools</li>
+      <li><strong>2026:</strong> Broaden government contracts and global reach</li>
+    </ul>
+  </section>
 
-    <div class="section">
-        <h2>Revenue Model</h2>
-        <ul>
-            <li>In-app purchases (custom avatars, upgrades)</li>
-            <li>Government and nonprofit contracts</li>
-            <li>Branded sponsorships (e.g., outdoor gear brands)</li>
-            <li>Subscription for premium content and guided tours</li>
-        </ul>
-    </div>
+  <section class="mb-5">
+    <h2 class="text-primary">Revenue Model</h2>
+    <ul>
+      <li>In-app purchases (avatars, upgrades)</li>
+      <li>Government and nonprofit contracts</li>
+      <li>Branded sponsorships (e.g., outdoor brands)</li>
+      <li>Premium subscription for guided tours and educational content</li>
+    </ul>
+  </section>
 
-    <div class="section">
-        <h2>Partnership Opportunities</h2>
-        <p>We are actively seeking collaborations with:
-            <ul>
-                <li>National Park Services</li>
-                <li>AR/VR development firms</li>
-                <li>Environmental nonprofits</li>
-                <li>Tourism boards and educational institutions</li>
-            </ul>
-        </p>
-    </div>
+  <section class="mb-5">
+    <h2 class="text-primary">Partnership Opportunities</h2>
+    <ul>
+      <li>National Park Services</li>
+      <li>AR/VR development firms</li>
+      <li>Environmental nonprofits</li>
+      <li>Tourism boards and educational institutions</li>
+    </ul>
+  </section>
 
-    <div class="section">
-        <h2>Team</h2>
-        <p>The AR Parks App is a project under Segura Mgmt, led by Brennen Segura and supported by a team of experienced developers, AR specialists, and conservation advisors.</p>
-    </div>
+  <section class="mb-5">
+    <h2 class="text-primary">Team</h2>
+    <p>Led by <strong>Brennen Segura</strong>, Segura Mgmt's AR Parks App project combines expertise from developers, AR specialists, and conservation advisors to deliver impactful, tech-forward visitor experiences.</p>
+  </section>
 
-    <div class="section">
-        <h2>Contact Information</h2>
-        <p>
-            Segura Mgmt<br>
-            New Iberia, Louisiana<br>
-            Email: brennen@seguramgmt.com<br>
-            Website: www.seguramgmt.com
-        </p>
-    </div>
+  <section class="mb-5">
+    <h2 class="text-primary">Contact Information</h2>
+    <p>
+      Segura Mgmt<br>
+      New Iberia, Louisiana<br>
+      Email: <a href="mailto:brennen@seguramgmt.com">brennen@seguramgmt.com</a><br>
+      Website: <a href="https://www.seguramgmt.com" target="_blank">www.seguramgmt.com</a>
+    </p>
+  </section>
 
-</body>
-</html>
-
+</div>
 {% endblock %}

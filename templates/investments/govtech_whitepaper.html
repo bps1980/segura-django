@@ -2,38 +2,11 @@
 {% load static %}
 
 {% block content %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>GovTech Proposal Engine Whitepaper | Segura Mgmt</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #fff;
-      color: #333;
-      margin: 0;
-      padding: 2rem;
-      line-height: 1.6;
-    }
-    h1, h2, h3 {
-      color: #1f3a93;
-    }
-    ul {
-      padding-left: 1.5rem;
-    }
-    section {
-      margin-bottom: 3rem;
-    }
-  </style>
-</head>
-<body>
+<div class="container py-5">
+  <h1 class="display-4 fw-bold text-center mb-4">GovTech Proposal Engine</h1>
+  <h2 class="text-center text-primary mb-5">Segura Mgmt – Whitepaper</h2>
 
-  <h1>GovTech Proposal Engine</h1>
-  <h2>Segura Mgmt – Whitepaper</h2>
-
-  <section>
+  <section class="mb-5">
     <h2>1. Introduction</h2>
     <p>
       The GovTech Proposal Engine is a smart automation system designed to help startups, small businesses,
@@ -43,7 +16,7 @@
     </p>
   </section>
 
-  <section>
+  <section class="mb-5">
     <h2>2. Purpose</h2>
     <p>
       The purpose of this whitepaper is to explain the architecture, capabilities, and roadmap of
@@ -51,7 +24,7 @@
     </p>
   </section>
 
-  <section>
+  <section class="mb-5">
     <h2>3. Core Features</h2>
     <ul>
       <li>Daily scraping of new SAM.gov and NASA SEWP solicitations based on NAICS codes</li>
@@ -62,7 +35,7 @@
     </ul>
   </section>
 
-  <section>
+  <section class="mb-5">
     <h2>4. Architecture Overview</h2>
     <ul>
       <li><strong>Backend:</strong> Django, PostgreSQL, Celery</li>
@@ -72,7 +45,7 @@
     </ul>
   </section>
 
-  <section>
+  <section class="mb-5">
     <h2>5. Automation Workflow</h2>
     <ol>
       <li>Fetch solicitations from public government sources</li>
@@ -83,7 +56,7 @@
     </ol>
   </section>
 
-  <section>
+  <section class="mb-5">
     <h2>6. Use Cases</h2>
     <ul>
       <li>SBIR/STTR submissions</li>
@@ -94,7 +67,7 @@
     </ul>
   </section>
 
-  <section>
+  <section class="mb-5">
     <h2>7. Monetization Strategy</h2>
     <ul>
       <li>Monthly subscription tiers based on document output limits</li>
@@ -103,7 +76,7 @@
     </ul>
   </section>
 
-  <section>
+  <section class="mb-5">
     <h2>8. Roadmap</h2>
     <ul>
       <li><strong>Q2 2025:</strong> Release MVP to select government partners</li>
@@ -113,7 +86,7 @@
     </ul>
   </section>
 
-  <section>
+  <section class="mb-5">
     <h2>9. Compliance & Security</h2>
     <p>
       All user data is encrypted and stored securely. Documents meet formatting standards outlined by
@@ -121,7 +94,7 @@
     </p>
   </section>
 
-  <section>
+  <section class="mb-5">
     <h2>10. Conclusion</h2>
     <p>
       The GovTech Proposal Engine removes the guesswork and inefficiencies of preparing and submitting
@@ -129,15 +102,12 @@
     </p>
   </section>
 
-  <section>
+  <section class="mb-5">
     <h2>Contact</h2>
     <p><strong>Company:</strong> Segura Mgmt</p>
-    <p><strong>Email:</strong> brennen@seguramgmt.com</p>
-    <p><strong>Website:</strong> www.seguramgmt.com</p>
-    <p><strong>GitHub:</strong> github.com/bps1980</p>
+    <p><strong>Email:</strong> <a href="mailto:brennen@seguramgmt.com">brennen@seguramgmt.com</a></p>
+    <p><strong>Website:</strong> <a href="https://www.seguramgmt.com" target="_blank">www.seguramgmt.com</a></p>
+    <p><strong>GitHub:</strong> <a href="https://github.com/bps1980" target="_blank">github.com/bps1980</a></p>
   </section>
-
-</body>
-</html>
-
+</div>
 {% endblock %}

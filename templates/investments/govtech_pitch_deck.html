@@ -2,61 +2,28 @@
 {% load static %}
 
 {% block content %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>GovTech Proposal Engine - Pitch Deck | Segura Mgmt</title>
-  <style>
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      margin: 0;
-      padding: 2rem;
-      background-color: #fdfdfd;
-      color: #333;
-      line-height: 1.6;
-    }
-    h1, h2, h3 {
-      color: #2c3e50;
-    }
-    .slide {
-      margin-bottom: 3rem;
-      padding-bottom: 2rem;
-      border-bottom: 1px solid #ddd;
-    }
-    .tagline {
-      color: #3498db;
-      font-style: italic;
-    }
-    ul {
-      padding-left: 1.5rem;
-    }
-  </style>
-</head>
-<body>
+<div class="container py-5">
+  <h1 class="display-4 fw-bold text-center mb-4">Segura Mgmt</h1>
+  <h2 class="text-center text-primary mb-5">GovTech Proposal Engine</h2>
+  <p class="lead text-center mb-5">Automating Government Bidding. Empowering Small Businesses.</p>
 
-  <div class="slide">
-    <h1>Segura Mgmt</h1>
-    <h2 class="tagline">GovTech Proposal Engine</h2>
-    <p>Automating Government Bidding. Empowering Small Businesses.</p>
-  </div>
-
-  <div class="slide">
+  <section class="mb-5">
     <h2>Problem</h2>
     <ul>
       <li>Government contracting is complex and time-consuming.</li>
       <li>Small businesses lack resources to compete effectively.</li>
       <li>Manual proposal processes lead to costly errors and missed deadlines.</li>
     </ul>
-  </div>
+  </section>
 
-  <div class="slide">
+  <section class="mb-5">
     <h2>Solution</h2>
-    <p>The GovTech Proposal Engine automates the identification, preparation, and submission of federal and state proposals using AI and predefined templates tailored to NAICS codes.</p>
-  </div>
+    <p>
+      The GovTech Proposal Engine automates the identification, preparation, and submission of federal and state proposals using AI and predefined templates tailored to NAICS codes.
+    </p>
+  </section>
 
-  <div class="slide">
+  <section class="mb-5">
     <h2>Key Features</h2>
     <ul>
       <li>Automated solicitation monitoring (SAM.gov, NASA SEWP, etc.)</li>
@@ -65,36 +32,36 @@
       <li>One-click generation of PDF submissions</li>
       <li>Integrated email dispatch and follow-up tracker</li>
     </ul>
-  </div>
+  </section>
 
-  <div class="slide">
+  <section class="mb-5">
     <h2>Market Opportunity</h2>
     <ul>
       <li>$700B+ U.S. federal contract spending annually</li>
       <li>Over 30 million small businesses eligible to bid</li>
       <li>Only 5% currently engage with government RFPs</li>
     </ul>
-  </div>
+  </section>
 
-  <div class="slide">
+  <section class="mb-5">
     <h2>Revenue Model</h2>
     <ul>
       <li>Subscription tiers: Starter, Pro, and Enterprise</li>
       <li>Pay-per-submission for non-subscribers</li>
       <li>White-label licensing for consulting firms</li>
     </ul>
-  </div>
+  </section>
 
-  <div class="slide">
+  <section class="mb-5">
     <h2>Traction</h2>
     <ul>
       <li>Currently used internally by Segura Mgmt to submit multiple proposals</li>
       <li>Automated 80% of manual proposal tasks</li>
       <li>Actively bidding on $25M+ in government work</li>
     </ul>
-  </div>
+  </section>
 
-  <div class="slide">
+  <section class="mb-5">
     <h2>Tech Stack</h2>
     <ul>
       <li>Backend: Django, PostgreSQL, Celery</li>
@@ -102,38 +69,35 @@
       <li>AI: GPT API for scope breakdown and custom prompt chains</li>
       <li>Integration: SAM.gov API, PDFKit, SMTP</li>
     </ul>
-  </div>
+  </section>
 
-  <div class="slide">
+  <section class="mb-5">
     <h2>Roadmap</h2>
     <ul>
-      <li>Q2 2025 – Public Beta Launch</li>
-      <li>Q3 2025 – Add DCAA Audit Compliance Toolkit</li>
-      <li>Q4 2025 – Launch DoD & NASA Modules</li>
-      <li>2026 – Strategic partnerships with PTAC and SBA</li>
+      <li><strong>Q2 2025:</strong> Public Beta Launch</li>
+      <li><strong>Q3 2025:</strong> Add DCAA Audit Compliance Toolkit</li>
+      <li><strong>Q4 2025:</strong> Launch DoD & NASA Modules</li>
+      <li><strong>2026:</strong> Strategic partnerships with PTAC and SBA</li>
     </ul>
-  </div>
+  </section>
 
-  <div class="slide">
+  <section class="mb-5">
     <h2>Team</h2>
     <p><strong>Brennen Segura</strong> – Founder & Product Architect</p>
     <p>Supported by advisors in GovCon, AI, and legal compliance.</p>
-  </div>
+  </section>
 
-  <div class="slide">
+  <section class="mb-5">
     <h2>Call to Action</h2>
     <p>We’re seeking $450,000 in seed funding to scale development, onboard users, and file a provisional patent for our auto-proposal generation framework.</p>
     <p>Invest in the future of small business government contracting.</p>
-  </div>
+  </section>
 
-  <div class="slide">
+  <section class="mb-5">
     <h2>Contact</h2>
-    <p><strong>Email:</strong> brennen@seguramgmt.com</p>
-    <p><strong>Website:</strong> www.seguramgmt.com</p>
-    <p><strong>GitHub:</strong> github.com/bps1980</p>
-  </div>
-
-</body>
-</html>
-
+    <p><strong>Email:</strong> <a href="mailto:brennen@seguramgmt.com">brennen@seguramgmt.com</a></p>
+    <p><strong>Website:</strong> <a href="https://www.seguramgmt.com" target="_blank">www.seguramgmt.com</a></p>
+    <p><strong>GitHub:</strong> <a href="https://github.com/bps1980" target="_blank">github.com/bps1980</a></p>
+  </section>
+</div>
 {% endblock %}
