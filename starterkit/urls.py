@@ -31,5 +31,4 @@ urlpatterns = [
     path('', landing_views.landing_page_view, name='index'),
     path('kyc-submissions/', views.all_kyc_submissions, name='all_kyc_submissions'),
     path('investments/', include('investments.urls')),  # <-- use 'investments' here,
-    path('index/', landing_views.landing_page_view, name='index'),  # optional, but good
 ]
