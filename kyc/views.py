@@ -37,7 +37,7 @@ def start_veriff_session(request):
         # Minimal payload without timestamp & nonce
         payload = {
             "verification": {
-                "callback": "https://f7b5-174-64-169-120.ngrok-free.app/kyc/veriff_callback",
+                "callback": "https://www.veriff.com/get-verified?navigation=slim/kyc/veriff_callback",
                 "person": {
                     "firstName": request.user.first_name or "John",
                     "lastName": request.user.last_name or "Doe"
