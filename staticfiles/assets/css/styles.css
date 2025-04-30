@@ -21131,3 +21131,27 @@ a:hover {
 .transform-none {
   transform: none !important;
 }
+
+/* Force label text to remain white, even when .active is added */
+.side-menu__item,
+.side-menu__item:visited,
+.side-menu__item:hover,
+.side-menu__item:focus,
+.side-menu__item:active,
+.side-menu__item.active {
+    color: #fff !important;
+}
+
+.side-menu__label {
+    color: #fff !important;
+}
+
+.side-menu__item.active .side-menu__label {
+    color: #fff !important;
+}
+
+/* Prevent .scrolled from changing the nav link color */
+#sidebar.scrolled .side-menu__item,
+#sidebar.scrolled .side-menu__label {
+    color: #fff !important;
+}

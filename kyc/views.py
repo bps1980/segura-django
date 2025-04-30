@@ -37,7 +37,7 @@ def start_veriff_session(request):
         # Minimal payload without timestamp & nonce
         payload = {
             "verification": {
-                "callback": "https://www.veriff.com/get-verified?navigation=slim/kyc/veriff_callback",
+                "callback": "https://segura-django-1.onrender.com/kyc/webhook/veriff/",
                 "person": {
                     "firstName": request.user.first_name or "John",
                     "lastName": request.user.last_name or "Doe"
@@ -72,21 +72,25 @@ def start_veriff_session(request):
 
 @csrf_exempt
 def veriff_callback(request):
-    data = json.loads(request.body)
-    print("🔄 Veriff callback received:", data)
+    if request.method != 'POST':
+        return JsonResponse({"error": "Invalid method"}, status=405)
 
     try:
+        data = json.loads(request.body)
+        print("🔄 Veriff callback received:", data)
+
         session_id = data['verification']['id']
         status = data['verification']['status']
 
         KYCSubmission.objects.filter(session_id=session_id).update(status=status)
         print(f"✅ KYC status updated for session {session_id} to {status}")
 
+        return JsonResponse({"status": "received"})
+
     except Exception as e:
         print(f"❌ Error processing Veriff webhook: {e}")
         return JsonResponse({"status": "error", "message": str(e)}, status=400)
 
-    return JsonResponse({"status": "received"})
 
 def all_kyc_submissions(request):
     submissions = KYCSubmission.objects.all().order_by('-submitted_at')
