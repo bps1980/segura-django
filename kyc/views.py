@@ -37,7 +37,7 @@ def start_veriff_session(request):
         # Minimal payload without timestamp & nonce
         payload = {
             "verification": {
-                "callback": "https://segura-django-1.onrender.com/kyc/webhook/veriff/",
+                "callback": "https://segura-django-1.onrender.com/webhook/veriff/",
                 "person": {
                     "firstName": request.user.first_name or "John",
                     "lastName": request.user.last_name or "Doe"
