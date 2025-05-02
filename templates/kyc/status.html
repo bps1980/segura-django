@@ -1,0 +1,23 @@
+<!-- templates/kyc/status.html -->
+
+{% load static %}
+
+{% block content %}
+<div class="container-fluid">
+<h2>KYC Status</h2>
+
+{% if kyc %}
+  <p><strong>Status:</strong> {{ kyc.status|title }}</p>
+
+  {% if kyc.status == 'pending' %}
+    <p>Your identity verification is currently under review.</p>
+  {% elif kyc.status == 'approved' %}
+    <p>Your KYC has been approved. You now have full access.</p>
+  {% elif kyc.status == 'rejected' %}
+    <p>Your KYC was rejected. Please contact support or try again.</p>
+  {% endif %}
+
+{% else %}
+  <p>No KYC submission found. <a href="{% url 'start_veriff' %}">Start KYC Verification</a></p>
+{% endif %}
+{% endblock %}

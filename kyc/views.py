@@ -26,18 +26,12 @@ def start_veriff_session(request):
         api_key = os.getenv("VERIFF_API_KEY")
         api_secret = os.getenv("VERIFF_API_SECRET")
 
-        print("🔍 Veriff ENV Check:")
-        print("BASE URL:", base_url)
-        print("API KEY:", api_key)
-        print("API SECRET exists:", bool(api_secret))
-
         if not base_url or not api_key or not api_secret:
             raise Exception("Missing Veriff environment variables.")
 
-        # Minimal payload without timestamp & nonce
         payload = {
             "verification": {
-                "callback": "https://segura-django-1.onrender.com/webhook/veriff/",
+                "callback": "https://segura-django-1.onrender.com/kyc/webhook/veriff/",
                 "person": {
                     "firstName": request.user.first_name or "John",
                     "lastName": request.user.last_name or "Doe"
@@ -49,26 +43,34 @@ def start_veriff_session(request):
         headers = {
             "X-AUTH-CLIENT": api_key,
             "Content-Type": "application/json"
-            # 🔥 Remove X-HMAC-SIGNATURE unless HMAC is enabled in Veriff dashboard
         }
 
-        print("📤 Sending request to:", f"{base_url}/v1/sessions")
-        print("📦 Payload:", json.dumps(payload))
-
-        # Use `json=` so headers are respected
         response = requests.post(f"{base_url}/v1/sessions", headers=headers, json=payload)
-
-        print("📥 Veriff response:", response.status_code, response.text)
+        data = response.json()
 
         if response.status_code == 201:
-            session_url = response.json()['verification']['url']
+            session_id = data['verification']['id']
+            session_url = data['verification']['url']
+
+            # Save initial KYCSubmission record
+            KYCSubmission.objects.create(
+                session_id=session_id,
+                user=request.user,
+                full_name=f"{request.user.first_name} {request.user.last_name}",
+                date_of_birth="2000-01-01",  # You can update later
+                address="TBD",
+                status="pending"
+            )
+
             return redirect(session_url)
+
         else:
             return render(request, 'kyc/error.html', {"error_message": response.text})
 
     except Exception as e:
         print("💥 Exception occurred:", str(e))
         return render(request, 'kyc/error.html', {"error_message": str(e)})
+
 
 @csrf_exempt
 def veriff_callback(request):
@@ -82,8 +84,14 @@ def veriff_callback(request):
         session_id = data['verification']['id']
         status = data['verification']['status']
 
-        KYCSubmission.objects.filter(session_id=session_id).update(status=status)
-        print(f"✅ KYC status updated for session {session_id} to {status}")
+        submission = KYCSubmission.objects.filter(session_id=session_id).first()
+        if submission:
+            submission.status = status
+            submission.reviewed_at = datetime.now(timezone.utc)
+            submission.save()
+            print(f"✅ KYC status updated for session {session_id} to {status}")
+        else:
+            print(f"⚠️ No KYCSubmission found for session {session_id}")
 
         return JsonResponse({"status": "received"})
 
@@ -91,6 +99,14 @@ def veriff_callback(request):
         print(f"❌ Error processing Veriff webhook: {e}")
         return JsonResponse({"status": "error", "message": str(e)}, status=400)
 
+@login_required
+def kyc_status_view(request):
+    try:
+        kyc = KYCSubmission.objects.filter(user=request.user).latest('submitted_at')
+    except KYCSubmission.DoesNotExist:
+        kyc = None
+
+    return render(request, 'kyc/status.html', {'kyc': kyc})
 
 def all_kyc_submissions(request):
     submissions = KYCSubmission.objects.all().order_by('-submitted_at')

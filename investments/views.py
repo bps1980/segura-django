@@ -29,6 +29,7 @@ from django.urls import reverse
 from .models import KYCSubmission
 from django.contrib.auth.decorators import login_required
 
+
 # Set your Stripe secret key
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
@@ -367,3 +368,4 @@ def get_funding_progress(request, project_id):
         'goal': float(project.funding_goal),
         'progress_percent': round(project.funding_progress_percent(), 2),
     })
+    

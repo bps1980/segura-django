@@ -1,13 +1,16 @@
 from . import views
 from django.urls import path
-from .views import generate_certificate_view, interested_projects_view  # ✅ Add this
+from .views import generate_certificate_view, interested_projects_view, profile_view, help_view, notifications_view  # ✅ Add this
 
 appname = 'dashboard'
 
 urlpatterns = [
     path('', views.index, name='dashboard'),
     path('dashboard', views.index, name='dashboard'),
-    path('settings/', views.account_settings, name='account_settings'),
+    path('settings/', views.account_settings, name='settings'),
+    path('profile/', views.profile_view, name='profile'),
+    path('help/', views.help_view, name='help'),
+    path('notifications/', views.notifications_view, name='notifications'),
     path('invested/', views.invested_projects, name='invested_projects'),
     path('interested/', interested_projects_view, name='interested_projects'),  # ✅ Fix here
     path('payments/', views.investment_payments, name='investment_payments'),

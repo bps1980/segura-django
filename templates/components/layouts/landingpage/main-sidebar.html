@@ -87,6 +87,19 @@
                                 <div class="btn-list d-lg-flex d-none mt-lg-2 mt-xl-0 mt-0">
                                     {% if user.is_authenticated %}
                                         <a href="{% url 'dashboard' %}" class="btn btn-wave btn-light">Dashboard</a>
+                                        <a href="{% url 'kyc_status' %}" class="btn btn-wave btn-warning d-flex align-items-center">
+                                            KYC Status
+                                            {% if kyc_status == 'pending' %}
+                                                <span class="badge bg-warning ms-2">Pending</span>
+                                            {% elif kyc_status == 'rejected' %}
+                                                <span class="badge bg-danger ms-2">Rejected</span>
+                                            {% elif kyc_status == 'approved' %}
+                                                <span class="badge bg-success ms-2">Approved</span>
+                                            {% else %}
+                                                <span class="badge bg-secondary ms-2">Not Started</span>
+                                            {% endif %}
+                                            <i class="fa fa-id-card ms-1"></i>
+                                        </a>
                                         <a href="{% url 'logout' %}" class="btn btn-wave btn-danger">Logout</a>
                                     {% else %}
                                         <a href="{% url 'register' %}" class="btn btn-wave btn-primary">Sign Up</a>

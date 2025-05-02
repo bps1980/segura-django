@@ -14,6 +14,8 @@ from utils.decorators import twofa_required
 from django.shortcuts import get_object_or_404
 from dashboard.models import Investment  # 🔁 import your Investment model
 from django.utils import timezone       # 🕒 import timezone for datetime
+from dashboard.models import Notification
+from django.contrib.auth import get_user_model
 
 
 def index(request):
@@ -25,14 +27,26 @@ def dashboard(request):
     return render(request, 'dashboard/index.html', {'projects': projects})
 
 def dashboard_view(request):
-    # Optional KYC restriction
-    user_kyc = KYCSubmission.objects.filter(user=request.user).last()
+    # Get latest KYC submission
+    user_kyc = KYCSubmission.objects.filter(user=request.user).order_by('-submitted_at').first()
+
+    # Redirect if no KYC or not approved
     if not user_kyc or user_kyc.status != 'approved':
         return redirect('submit_kyc')
 
-    # ✅ Pass projects to the template
+    # Include KYC status in context
+    kyc_status = user_kyc.status if user_kyc else None
+
+    # Include your other context (like projects)
     projects = Project.objects.all()
-    return render(request, 'dashboard/index.html', {'projects': projects})
+
+    unread_count = Notification.objects.filter(user=request.user, is_read=False).count()
+
+    return render(request, 'dashboard/index.html', {
+        'projects': projects,
+        'kyc_status': kyc_status,
+        'unread_count': unread_count,  # 👈 add this
+    })
 
 @login_required
 def interested_projects_view(request):
@@ -157,3 +171,57 @@ def investment_agreement_view(request, investment_id):
             'date': timezone.now().date()
         }
     })
+    
+@login_required
+def dashboard_home(request):
+    try:
+        kyc = KYCSubmission.objects.filter(user=request.user).latest('submitted_at')
+        if kyc.status != 'approved':
+            return redirect('kyc_status')
+    except KYCSubmission.DoesNotExist:
+        return redirect('kyc_status')
+
+    return render(request, 'dashboard/index.html')
+
+@login_required
+def profile_view(request):
+    return render(request, 'dashboard/profile.html')
+
+@login_required
+def settings_view(request):
+    return render(request, 'dashboard/settings.html')
+
+@login_required
+def help_view(request):
+    # Example notification added when user visits Help
+    Notification.objects.create(
+        user=request.user,
+        message="Visited the Help Center.",
+        link="/dashboard/help/"
+    )
+    return render(request, 'dashboard/help.html')
+
+@login_required
+def investment_success(request):
+    Notification.objects.create(
+        user=request.user,
+        message="You successfully invested $5,000 in SeguraSafeSwap.",
+        link="/dashboard/invested/"
+    )
+    return redirect('invested_projects')
+
+User = get_user_model()
+
+def send_maintenance_notification():
+    User = get_user_model()
+    for user in User.objects.all():
+        Notification.objects.create(
+            user=user,
+            message="Platform maintenance scheduled May 10, 2:00 AM UTC.",
+            link="/dashboard/"
+        )
+        
+@login_required
+def notifications_view(request):
+    notifications = Notification.objects.filter(user=request.user).order_by('-created_at')[:10]
+    return render(request, 'dashboard/notifications.html', {'notifications': notifications})
