@@ -36,7 +36,11 @@ def start_veriff_session(request):
                     "firstName": request.user.first_name or "John",
                     "lastName": request.user.last_name or "Doe"
                 },
-                "vendorData": f"user-{request.user.id}"
+                "vendorData": f"user-{request.user.id}",
+                "timestamp": int(time.time()),  # Veriff may require this
+                "lang": "en",
+                "successUrl": "https://segura-django-1.onrender.com/dashboard/",
+                "errorUrl": "https://segura-django-1.onrender.com/kyc/error/"
             }
         }
 
@@ -72,6 +76,8 @@ def start_veriff_session(request):
         return render(request, 'kyc/error.html', {"error_message": str(e)})
 
 
+from dashboard.models import Notification  # ✅ Import if not already
+
 @csrf_exempt
 def veriff_callback(request):
     if request.method != 'POST':
@@ -89,6 +95,14 @@ def veriff_callback(request):
             submission.status = status
             submission.reviewed_at = datetime.now(timezone.utc)
             submission.save()
+
+            # ✅ Create in-app notification
+            Notification.objects.create(
+                user=submission.user,
+                message=f"KYC verification {status.capitalize()}",
+                link="/dashboard/"
+            )
+
             print(f"✅ KYC status updated for session {session_id} to {status}")
         else:
             print(f"⚠️ No KYCSubmission found for session {session_id}")
@@ -99,10 +113,12 @@ def veriff_callback(request):
         print(f"❌ Error processing Veriff webhook: {e}")
         return JsonResponse({"status": "error", "message": str(e)}, status=400)
 
+
 @login_required
 def kyc_status_view(request):
     try:
         kyc = KYCSubmission.objects.filter(user=request.user).latest('submitted_at')
+        kyc_status = kyc.status if kyc else None
     except KYCSubmission.DoesNotExist:
         kyc = None
 
