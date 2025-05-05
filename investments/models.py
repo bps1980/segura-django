@@ -25,7 +25,8 @@ class Project(models.Model):
         if self.funding_goal > 0:
             return (self.amount_raised() / self.funding_goal) * 100
         return 0
-    
+
+
 class Favorite(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     project = models.ForeignKey(Project, on_delete=models.CASCADE)
@@ -33,6 +34,7 @@ class Favorite(models.Model):
 
     class Meta:
         unique_together = ('user', 'project')
+
 
 class InvestorProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -42,6 +44,7 @@ class InvestorProfile(models.Model):
 
     def __str__(self):
         return f"{self.user.username}'s Profile"
+
 
 class Investment(models.Model):
     PAYMENT_CHOICES = [
@@ -56,8 +59,13 @@ class Investment(models.Model):
     payment_method = models.CharField(max_length=20, choices=PAYMENT_CHOICES)
     created_at = models.DateTimeField(auto_now_add=True)
 
+    # ✅ NEW FIELDS for agreement status
+    agreement_signed = models.BooleanField(default=False)
+    agreement_signed_at = models.DateTimeField(null=True, blank=True)
+
     def __str__(self):
         return f"{self.project.title} - {self.amount}"
+
 
 class Payment(models.Model):
     investment = models.ForeignKey(Investment, on_delete=models.CASCADE)
@@ -70,4 +78,5 @@ class Payment(models.Model):
 
     def __str__(self):
         return f"{self.transaction_id} - {self.status}"
+
 

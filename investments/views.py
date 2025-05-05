@@ -29,6 +29,9 @@ from django.urls import reverse
 from .models import KYCSubmission
 from django.contrib.auth.decorators import login_required
 
+from django.utils import timezone
+from django.contrib import messages
+
 
 # Set your Stripe secret key
 stripe.api_key = settings.STRIPE_SECRET_KEY
@@ -369,3 +372,20 @@ def get_funding_progress(request, project_id):
         'progress_percent': round(project.funding_progress_percent(), 2),
     })
     
+@login_required
+def investment_agreement_view(request, investment_id):
+    investment = get_object_or_404(Investment, id=investment_id, investor__user=request.user)
+
+    if request.method == 'POST':
+        investment.agreement_signed = True
+        investment.agreement_signed_at = timezone.now()
+        investment.save()
+
+        # Optional: notify or redirect
+        messages.success(request, "✅ You have signed the agreement.")
+        return redirect('invested_projects')  # or any page you want
+
+    return render(request, 'dashboard/agreements.html', {
+        'investment': investment,
+        'user': request.user
+    })

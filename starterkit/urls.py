@@ -5,6 +5,8 @@ from landing import views as landing_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('investoroutreach/', include('investoroutreach.urls')),
+    path('clicktracker/', include('clicktracker.urls')),
 
     # App URLs
     path('accounts/', include('accounts.urls')),

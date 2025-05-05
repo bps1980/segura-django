@@ -73,7 +73,7 @@
     <div class="agreement-section">
         <p><span class="agreement-label">Date:</span> {{ agreement.date|default:"_________" }}</p>
         <p><span class="agreement-label">Investor Name:</span> {{ user.get_full_name|default:"_________" }}</p>
-        <p><span class="agreement-label">Project:</span> {{ investment.project|default:"_________" }}</p>
+        <p><span class="agreement-label">Project:</span> {{ investment.project.title|default:"_________" }}</p>
         <p><span class="agreement-label">Amount:</span> ${{ investment.amount|default:"_________" }}</p>
     </div>
 
@@ -101,14 +101,20 @@
         <button onclick="window.print()" class="btn btn-outline-secondary">Print / Save as PDF</button>
     </div>
 
-    <form method="POST">
-        {% csrf_token %}
-        <div class="mt-4 text-center">
-          <button type="submit" class="btn btn-success btn-lg">
-            ✅ I Agree and Sign This Agreement
-          </button>
+    {% if not investment.agreement_signed %}
+        <form method="POST">
+            {% csrf_token %}
+            <div class="mt-4 text-center">
+                <button type="submit" class="btn btn-success btn-lg">
+                    ✅ I Agree and Sign This Agreement
+                </button>
+            </div>
+        </form>
+        {% else %}
+        <div class="alert alert-success text-center mt-4">
+            ✅ You already signed this agreement on {{ investment.agreement_signed_at|date:"F j, Y" }}.
         </div>
-      </form>
+        {% endif %}
 </div>
 
 {% endblock %}

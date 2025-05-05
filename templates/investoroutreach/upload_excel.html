@@ -1,0 +1,28 @@
+{% extends "admin/base_site.html" %}
+{% load static %}
+
+{% block title %}Upload Investor Excel{% endblock %}
+
+{% block content %}
+<div class="content">
+    <h1>Upload Investor Contact File</h1>
+
+    <form method="post" enctype="multipart/form-data" style="margin-top: 20px;">
+        {% csrf_token %}
+        <div style="margin-bottom: 10px;">
+            <label for="excel_file">Select Excel File (.xlsx):</label><br>
+            <input type="file" name="excel_file" id="excel_file" required>
+        </div>
+
+        <button type="submit" class="default submit-row">Upload & Send Emails</button>
+    </form>
+
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</div>
+{% endblock %}

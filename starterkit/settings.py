@@ -67,6 +67,8 @@ INSTALLED_APPS = [
     'investments',
     'kyc',
     'django.contrib.humanize',
+    'investoroutreach',
+    'clicktracker'
 ]
 
 MIDDLEWARE = [

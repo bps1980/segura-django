@@ -1,0 +1,61 @@
+{% extends 'components/base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Email Click Tracker</h2>
+
+    <table class="table table-bordered table-hover mt-3">
+        <thead class="thead-dark">
+            <tr>
+                <th>Company</th>
+                <th>Email</th>
+                <th>Country</th>
+                <th>Status</th>
+                <th>Clicked</th>
+                <th>Reviewed</th>
+                <th>Timestamp</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for log in logs %}
+            <tr class="{% if log.clicked %}table-success{% endif %}">
+                <td>{{ log.company }}</td>
+                <td>{{ log.recipient_email }}</td>
+                <td>{{ log.country }}</td>
+                <td>
+                    {% if log.success %}
+                        ✅ Sent
+                    {% else %}
+                        ❌ Failed
+                    {% endif %}
+                </td>
+                <td>
+                    {% if log.clicked %}
+                        ✅
+                    {% else %}
+                        ❌
+                    {% endif %}
+                </td>
+                <td>
+                    {% if log.reviewed %}
+                        ✅
+                    {% else %}
+                        ❌
+                    {% endif %}
+                </td>
+                <td>{{ log.created_at|date:"Y-m-d H:i" }}</td>
+                <td>
+                    {% if not log.reviewed %}
+                        <form method="post" action="{% url 'clicktracker:mark_reviewed' log.id %}">
+                            {% csrf_token %}
+                            <button class="btn btn-sm btn-outline-primary">Mark Reviewed</button>
+                        </form>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
