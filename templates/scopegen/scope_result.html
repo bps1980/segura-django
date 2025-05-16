@@ -1,0 +1,36 @@
+{% extends "components/base.html" %}
+{% load static %}
+
+{% block title %}Scope of Work Result{% endblock %}
+
+{% block styles %}
+  <link rel="stylesheet" href="{% static 'css/scopegen.css' %}">
+{% endblock %}
+
+{% block scripts %}
+  <script src="{% static 'js/scopegen.js' %}"></script>
+{% endblock %}
+{% block content %}
+  <h2>Generated Scope of Work</h2>
+  <p><strong>Project Type:</strong> {{ scope.project_type }}</p>
+  <p><strong>Industry:</strong> {{ scope.industry }}</p>
+  <p><strong>Goals:</strong> {{ scope.goals }}</p>
+  <p><strong>Tools:</strong> {{ scope.tools }}</p>
+  <p><strong>Timeline:</strong> {{ scope.timeline }}</p>
+  <p>
+  Shareable Link:
+  <a href="{% url 'scopegen:scope_public' uuid=scope.share_uuid %}" target="_blank">
+    View Public Scope
+  </a>
+  </p>
+  <hr>
+  <pre>{{ scope.generated_scope }}</pre>
+  <a href="{% url 'scopegen:scope_pdf' scope.pk %}" class="btn btn-primary">Download PDF</a>
+  <form method="post" action="{% url 'scopegen:toggle_pitch_ready' pk=scope.pk %}">
+  {% csrf_token %}
+  <button class="btn btn-warning" type="submit">
+    {% if scope.is_pitch_ready %}Unmark Pitch Ready{% else %}Mark Pitch Ready{% endif %}
+  </button>
+</form>
+
+{% endblock %}

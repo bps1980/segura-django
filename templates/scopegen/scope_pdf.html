@@ -1,0 +1,23 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Scope of Work PDF</title>
+    <style>
+        body { font-family: Arial, sans-serif; font-size: 13px; line-height: 1.6; }
+        h1 { font-size: 20px; }
+        hr { margin: 20px 0; }
+    </style>
+</head>
+<body>
+    <h1>Scope of Work</h1>
+    <p><strong>Project Type:</strong> {{ scope.project_type }}</p>
+    <p><strong>Industry:</strong> {{ scope.industry }}</p>
+    <p><strong>Goals:</strong><br>{{ scope.goals }}</p>
+    <p><strong>Tools:</strong> {{ scope.tools }}</p>
+    <p><strong>Timeline:</strong> {{ scope.timeline }}</p>
+    <hr>
+    <pre>{{ scope.generated_scope }}</pre>
+</body>
+</html>

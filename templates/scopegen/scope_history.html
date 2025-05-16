@@ -1,0 +1,16 @@
+{% extends "components/base.html" %}
+{% block content %}
+  <h2>My Scope History</h2>
+  <ul>
+    {% for scope in scopes %}
+      <li>
+        {{ scope.created_at|date:"Y-m-d H:i" }} —
+        {{ scope.project_type }} —
+        <a href="{% url 'scopegen:scope_result' scope.pk %}">View</a> |
+        <a href="{% url 'scopegen:scope_pdf' scope.pk %}">Download PDF</a>
+      </li>
+    {% empty %}
+      <p>No scopes created yet.</p>
+    {% endfor %}
+  </ul>
+{% endblock %}

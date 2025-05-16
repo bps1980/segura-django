@@ -1,0 +1,22 @@
+{% extends "components/base.html" %}
+{% block content %}
+  <div class="container mt-4">
+    <h2>Duplicate Scope</h2>
+    <p>You're about to duplicate the following Scope of Work:</p>
+
+    <ul>
+      <li><strong>Project Type:</strong> {{ original.project_type }}</li>
+      <li><strong>Industry:</strong> {{ original.industry }}</li>
+      <li><strong>Goals:</strong> {{ original.goals }}</li>
+      <li><strong>Tools:</strong> {{ original.tools }}</li>
+      <li><strong>Timeline:</strong> {{ original.timeline }}</li>
+      <li><strong>Category:</strong> {{ original.get_category_display }}</li>
+    </ul>
+
+    <form method="post">
+      {% csrf_token %}
+      <button type="submit" class="btn btn-success">Confirm Duplicate</button>
+      <a href="{% url 'scopegen:scope_history' %}" class="btn btn-secondary">Cancel</a>
+    </form>
+  </div>
+{% endblock %}

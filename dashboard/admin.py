@@ -6,7 +6,7 @@ Group.objects.get_or_create(name="Employee")
 Group.objects.get_or_create(name="Admin")
 
 # Assign an existing user to a group
-username = "your_user"  # Replace with an actual username in your DB
+username = "brennen@seguramgmt.com"  # Replace with an actual username in your DB
 
 try:
     user = User.objects.get(username=username)

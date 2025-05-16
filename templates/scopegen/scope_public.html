@@ -1,0 +1,11 @@
+{% extends "components/base.html" %}
+{% block content %}
+  <h2>Public Scope of Work</h2>
+  <p><strong>Project Type:</strong> {{ scope.project_type }}</p>
+  <p><strong>Industry:</strong> {{ scope.industry }}</p>
+  <p><strong>Goals:</strong> {{ scope.goals }}</p>
+  <p><strong>Tools:</strong> {{ scope.tools }}</p>
+  <p><strong>Timeline:</strong> {{ scope.timeline }}</p>
+  <hr>
+  <pre>{{ scope.generated_scope }}</pre>
+{% endblock %}

@@ -10,6 +10,12 @@ class Project(models.Model):
     image_url = models.URLField()
     whitepaper_url = models.URLField(blank=True, null=True)
     pitch_deck_url = models.URLField(blank=True, null=True)
+    pitch_deck_template = models.CharField(
+    max_length=255,
+    blank=True,
+    null=True,
+    help_text="Enter the path to the pitch deck template, e.g., 'pitchdecks/safex_pitch_deck.html'"
+    )
     funding_min = models.DecimalField(max_digits=12, decimal_places=2)
     funding_max = models.DecimalField(max_digits=12, decimal_places=2)
     funding_goal = models.DecimalField(max_digits=12, decimal_places=2, default=0.0)

@@ -1,3 +1,4 @@
+from django.shortcuts import get_object_or_404, render
 import requests, json, hmac, hashlib
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.forms import UserCreationForm
@@ -57,8 +58,12 @@ def interested_projects(request):
     })
 
 def project_detail(request, project_id):
-    project = get_object_or_404(Project, pk=project_id)
-    return render(request, 'investments/project_detail.html', {'project': project})
+    project = get_object_or_404(Project, id=project_id)
+
+    return render(request, 'investments/project_detail.html', {
+        'project': project,
+        'pitch_deck_url': project.pitch_deck_template  # stores full URL
+    })
 
 @login_required
 def dashboard_view(request):
@@ -75,85 +80,75 @@ def dashboard_view(request):
     return render(request, 'dashboard/index.html')
     
     # ...continue with dashboard logic
-def segurainsures_whitepaper(request):
-    return render(request, 'investments/segurainsures_whitepaper.html')
+#def segurainsures_whitepaper(request):
+    #return render(request, 'investments/verisure_whitepaper.html')
 
 def segurainsures_pitch_deck(request): 
-    return render(request, 'investments/segurainsures_pitch_deck.html')
+    return render(request, 'investments/verisure_pitch_deck.html')
 
-def segurafinance_whitepaper(request):
-    return render(request, 'investments/segurafinance_whitepaper.html')
+#def segurafinance_whitepaper(request):
+    #return render(request, 'investments/finovia_whitepaper.html')
 
 def segurafinance_pitch_deck(request): 
-    return render(request, 'investments/segurafinance_pitch_deck.html')    
+    return render(request, 'investments/finovia_pitch_deck.html')    
     
-def segurasafeswap_whitepaper(request):
-    return render(request, 'investments/segurasafeswap_whitepaper.html')
+#def segurasafeswap_whitepaper(request):
+    #return render(request, 'investments/safex_whitepaper.html')
 
 def segurasafeswap_pitch_deck(request): 
-    return render(request, 'investments/segurasafeswap_pitch_deck.html')
+    return render(request, 'investments/safex_pitch_deck.html')
 
-def cajunsea_whitepaper(request):
-    return render(request, 'investments/cajunsea_whitepaper.html')
+#def cajunsea_whitepaper(request):
+    #return render(request, 'investments/nexora_whitepaper.html')
 
 def cajunsea_pitch_deck(request): 
-    return render(request, 'investments/cajunsea_pitch_deck.html')
+    return render(request, 'investments/nexora_pitch_deck.html')
 
+def civos_pitch_deck(request):
+    return render(request, 'investments/civos_pitch_deck.html')
 
-def mdav_whitepaper(request):
-    return render(request, 'investments/mdav_whitepaper.html')
+#def mdav_whitepaper(request):
+   # return render(request, 'investments/quadcopter_whitepaper.html')
 
 def mdav_pitch_deck(request): 
-    return render(request, 'investments/mdav_pitch_deck.html')
+    return render(request, 'investments/quadcopter_pitch_deck.html')
 
+def sgmt_pitch_deck(request):
+    return render(request, 'investments/sgmt_pitch_deck.html')
 
-def dag_whitepaper(request):
-    return render(request, 'investments/dag_whitepaper.html')
+#def dag_whitepaper(request):
+    #return render(request, 'investments/dag_whitepaper.html')
 
 def dag_pitch_deck(request): 
     return render(request, 'investments/dag_pitch_deck.html')
 
 
-def govtech_whitepaper(request):
-    return render(request, 'investments/govtech_whitepaper.html')
+#def govtech_whitepaper(request):
+    #return render(request, 'investments/govtech_whitepaper.html')
 
 def govtech_pitch_deck(request): 
     return render(request, 'investments/govtech_pitch_deck.html')
 
-def hftbot_whitepaper(request):
-    return render(request, 'investments/hftbot_whitepaper.html')
+#def hftbot_whitepaper(request):
+    #return render(request, 'investments/automatedtrading_whitepaper.html')
 
 def hftbot_pitch_deck(request): 
-    return render(request, 'investments/hftbot_pitch_deck.html')
+    return render(request, 'investments/automatedtrading_pitch_deck.html')
 
-def aichat_whitepaper(request):
-    return render(request, 'investments/aichat_whitepaper.html')
+#def aichat_whitepaper(request):
+   # return render(request, 'investments/aichat_whitepaper.html')
 
 def aichat_pitch_deck(request): 
     return render(request, 'investments/aichat_pitch_deck.html')
 
-def arparks_whitepaper(request):
-    return render(request, 'investments/arparks_whitepaper.html')
-
-def arparks_pitch_deck(request): 
-    return render(request, 'investments/arparks_pitch_deck.html')
-
-
-def nga_whitepaper(request):
-    return render(request, 'investments/nga_whitepaper.html')
-
-def nga_pitch_deck(request): 
-    return render(request, 'investments/nga_pitch_deck.html')
-
-
-def xactimate_whitepaper(request):
-    return render(request, 'investments/xactimate_whitepaper.html')
+#def xactimate_whitepaper(request):
+   # return render(request, 'investments/xactimate_whitepaper.html')
 
 def xactimate_pitch_deck(request): 
     return render(request, 'investments/xactimate_pitch_deck.html')
 
-def sam_whitepaper(request):
-    return render(request, 'investments/sam_whitepaper.html')
+#def sam_whitepaper(request):
+   # return render(request, 'investments/sam_whitepaper.html')
 
 def sam_pitch_deck(request): 
     return render(request, 'investments/sam_pitch_deck.html')

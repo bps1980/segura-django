@@ -55,17 +55,9 @@
       <h3 class="mb-3">Project Overview</h3>
       <p>{{ project.description|linebreaks }}</p>
 
-      {% if project.whitepaper_url %}
-      <a href="{{ project.whitepaper_url }}" class="btn btn-outline-secondary mt-3" target="_blank">
-        📄 View Whitepaper
-      </a>
-      {% endif %}
-
-      {% if project.pitch_deck_url %}
-      <a href="{{ project.pitch_deck_url }}" class="btn btn-outline-secondary mt-3 ms-2" target="_blank">
-        📊 View Pitch Deck
-      </a>
-      {% endif %}
+      {% if project.pitch_deck_template %}
+        {% include project.pitch_deck_template %}
+    {% endif %}
     </div>
   </div>
 </div>

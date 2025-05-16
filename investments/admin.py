@@ -15,4 +15,5 @@ class PaymentAdmin(admin.ModelAdmin):
 
 @admin.register(Project)
 class ProjectAdmin(admin.ModelAdmin):
-    list_display = ['title', 'funding_min', 'funding_max']
+    list_display = ['title', 'funding_min', 'funding_max', 'pitch_deck_template']
+    list_editable = ['pitch_deck_template']

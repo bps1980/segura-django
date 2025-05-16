@@ -1,0 +1,104 @@
+{% extends "components/base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container py-5">
+  <div class="text-center mb-5">
+    <h1 class="fw-bold">CIVOS: Civilization Operating System</h1>
+    <h5 class="text-muted">By Segura Mgmt</h5>
+    <p class="mt-3">AI-driven economic simulation platform to model, forecast, and stress-test civilization-scale economic reforms and future transitions.</p>
+  </div>
+
+  <section class="mb-5">
+    <h2 class="text-primary">Problem</h2>
+    <ul>
+      <li>Governments lack simulation tools to forecast the economic impact of major reforms like UBI, automation, or carbon taxation.</li>
+      <li>Traditional economic models are static, top-down, and disconnected from real-time data and behavior-driven outcomes.</li>
+      <li>Investors and institutions need a strategic planning tool for long-horizon macro trends.</li>
+    </ul>
+  </section>
+
+  <section class="mb-5">
+    <h2 class="text-primary">Our Solution</h2>
+    <p>CIVOS is a modular, AI-enhanced platform that models present and future economies using agent-based simulation, real-world data, and interactive policy levers.</p>
+    <ul>
+      <li>Agent-based economic engine with custom citizen, corporate, and government actors</li>
+      <li>Scenario convergence slider to simulate transition over time</li>
+      <li>Visual dashboards comparing simulated vs. historical GDP, inflation, unemployment, and automation rates</li>
+    </ul>
+  </section>
+
+  <section class="mb-5">
+    <h2 class="text-primary">Key Features</h2>
+    <ul>
+      <li><strong>Agent-Based Modeling:</strong> Built on Python's Mesa for micro-to-macro simulation</li>
+      <li><strong>AI-Powered Forecasting:</strong> GPT-based scenario reasoning & dynamic policy recommendations</li>
+      <li><strong>Live Data Ingestion:</strong> FRED and World Bank datasets for real-world calibration</li>
+      <li><strong>Interactive UI:</strong> Dash/Plotly dashboard with scenario stepping, graph comparisons, and export tools</li>
+    </ul>
+  </section>
+
+  <section class="mb-5">
+    <h2 class="text-primary">Market Opportunity</h2>
+    <ul>
+      <li><strong>GovTech:</strong> $20B+ global spend on public sector modernization and simulation tools</li>
+      <li><strong>Economic Modeling & AI:</strong> $50B+ opportunity in think tanks, hedge funds, and policy labs</li>
+      <li><strong>Digital Twin Software:</strong> Growing demand for nation-scale simulation and digital planning environments</li>
+    </ul>
+  </section>
+
+  <section class="mb-5">
+    <h2 class="text-primary">Architecture Overview</h2>
+    <ul>
+      <li>Python + Mesa engine for agent simulation</li>
+      <li>FastAPI backend with policy scenario loader</li>
+      <li>Plotly Dash frontend with FRED-data overlay</li>
+      <li>Modular JSON-based scenario definitions and logging</li>
+    </ul>
+  </section>
+
+  <section class="mb-5">
+    <h2 class="text-primary">Revenue Model</h2>
+    <ul>
+      <li>Government and university licensing</li>
+      <li>Think tank SaaS platform subscriptions</li>
+      <li>API access for macro hedge funds and research firms</li>
+      <li>Custom consulting engagements and model tuning</li>
+    </ul>
+  </section>
+
+  <section class="mb-5">
+    <h2 class="text-primary">Roadmap</h2>
+    <ul>
+      <li><strong>Q2 2025:</strong> MVP with simulation engine and real-vs-sim GDP & automation overlays</li>
+      <li><strong>Q3 2025:</strong> Policy scenario loader, UBI & automation stress testing</li>
+      <li><strong>Q4 2025:</strong> Academic beta launch and investor pilot models</li>
+      <li><strong>2026:</strong> AI-driven forecasting engine and full policy simulation suite</li>
+    </ul>
+  </section>
+
+  <section class="mb-5">
+    <h2 class="text-primary">Funding Ask</h2>
+    <p><strong>Total Raise: $1,300,000</strong></p>
+    <ul>
+      <li>$300,000 – Simulation Engine Development (Mesa + FastAPI)</li>
+      <li>$250,000 – GPT-Integrated Forecasting & AI Agent Training</li>
+      <li>$200,000 – Data ingestion pipelines and economic model calibration</li>
+      <li>$200,000 – Dashboards, export tools, and scenario control UI</li>
+      <li>$150,000 – Legal, compliance, and data licensing</li>
+      <li>$100,000 – Marketing, academic outreach, and publishing</li>
+      <li>$100,000 – DevOps, security, and team operations</li>
+    </ul>
+    <p class="text-muted"><em>*Team expansion and API deployment planned post-raise milestone 1.</em></p>
+  </section>
+
+  <section class="mb-5">
+    <h2 class="text-primary">Team & Contact</h2>
+    <p><strong>Segura Mgmt</strong> — Founded by Brennen Segura, CIVOS is built by experienced engineers, AI researchers, and policy modelers with a track record in blockchain, simulation, and data platforms.</p>
+    <ul>
+      <li>Email: <a href="mailto:brennen@seguramgmt.com">brennen@seguramgmt.com</a></li>
+      <li>Website: <a href="https://www.seguramgmt.com" target="_blank">www.seguramgmt.com</a></li>
+    </ul>
+  </section>
+</div>
+{% endblock %}

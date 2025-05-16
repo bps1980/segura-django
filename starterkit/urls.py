@@ -2,17 +2,20 @@ from django.contrib import admin
 from django.urls import path, include
 from kyc import views as kyc_views
 from landing import views as landing_views
+from clicktracker.views import email_clicked
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('investoroutreach/', include('investoroutreach.urls')),
     path('clicktracker/', include('clicktracker.urls')),
+    path("click/<int:investor_id>/", email_clicked, name="email_clicked"),
 
     # App URLs
     path('accounts/', include('accounts.urls')),
     path('dashboard/', include('dashboard.urls')),
     path('kyc/', include('kyc.urls')),
     path('investments/', include('investments.urls')),
+    path("services/", include("services.urls")),
 
     # KYC custom paths
     path('submit/', kyc_views.submit_kyc, name='submit_kyc'),
@@ -21,4 +24,7 @@ urlpatterns = [
 
     # Landing page
     path('', landing_views.landing_page_view, name='index'),
+    
+    # ScopeGen
+    path('scopegen/', include('scopegen.urls')),
 ]

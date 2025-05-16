@@ -1,0 +1,111 @@
+{% extends "components/base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container py-5">
+  <h1 class="display-4 fw-bold text-center mb-4">Automated Trading</h1>
+  <h2 class="text-center text-primary mb-5">Whitepaper – Segura Mgmt</h2>
+
+  <section class="mb-5">
+    <h3>1. Abstract</h3>
+    <p>
+      This whitepaper outlines the architecture, purpose, and vision for the HFT Bot Department, a high-frequency algorithmic trading system operated by Segura Mgmt. This department focuses on executing advanced trading strategies with low latency and high precision across both centralized and decentralized exchanges.
+    </p>
+  </section>
+
+  <section class="mb-5">
+    <h3>2. Mission</h3>
+    <p>
+      To democratize access to institutional-grade trading infrastructure by automating high-frequency strategies that reduce manual bias and maximize alpha.
+    </p>
+  </section>
+
+  <section class="mb-5">
+    <h3>3. System Architecture</h3>
+    <ul>
+      <li><strong>Bot Engine:</strong> Python-based execution core using CCXT for CEX integration.</li>
+      <li><strong>Strategy Layer:</strong> Real-time signal generation using support/resistance, RSI, sqzmom_lb, and stochastic indicators.</li>
+      <li><strong>Order Routing:</strong> Optimized market/limit order logic with backoff retries and slippage protection.</li>
+      <li><strong>Monitoring:</strong> Integrated dashboards with logging, alerts, and trade reporting.</li>
+    </ul>
+  </section>
+
+  <section class="mb-5">
+    <h3>4. Supported Exchanges</h3>
+    <ul>
+      <li>BinanceUS</li>
+      <li>Kraken</li>
+      <li>Uniswap V3</li>
+      <li>Ubeswap V2/V3</li>
+      <li>SushiSwap</li>
+    </ul>
+  </section>
+
+  <section class="mb-5">
+    <h3>5. Strategies</h3>
+    <ul>
+      <li><strong>Market Making with Take-Profit:</strong> Place bids and asks around mid-price with adaptive thresholds.</li>
+      <li><strong>Optimized Swing Entry:</strong> Buy low using RSI underbought levels, sell when resistance hits.</li>
+      <li><strong>BTC High-Low Arbitrage:</strong> Detect and capitalize on BTC volatility windows across pairs.</li>
+    </ul>
+  </section>
+
+  <section class="mb-5">
+    <h3>6. Backtesting Results</h3>
+    <ul>
+      <li><strong>Strategy A:</strong> 177.09% ROI over 5 years</li>
+      <li><strong>Strategy B:</strong> 207.94% ROI</li>
+      <li><strong>Strategy C:</strong> 235.80% ROI</li>
+    </ul>
+  </section>
+
+  <section class="mb-5">
+    <h3>7. Security & Compliance</h3>
+    <ul>
+      <li>JWT-authenticated API connections</li>
+      <li>Rate-limiting and bot throttling</li>
+      <li>Secure key vault using HashiCorp Vault</li>
+      <li>Audit logs and traceability built-in</li>
+    </ul>
+  </section>
+
+  <section class="mb-5">
+    <h3>8. Roadmap</h3>
+    <ul>
+      <li><strong>Q2 2025:</strong> Alpha testing with internal funds</li>
+      <li><strong>Q3 2025:</strong> Investor onboarding and public dashboard</li>
+      <li><strong>Q4 2025:</strong> Launch white-labeled strategy marketplace</li>
+      <li><strong>2026:</strong> Licensing of regulated trading entity</li>
+    </ul>
+  </section>
+
+  <section class="mb-5">
+    <h3>9. Token Utility (SSS)</h3>
+    <ul>
+      <li>Stake SSS to access exclusive strategies</li>
+      <li>Use SSS to reduce performance fees</li>
+      <li>Vote on strategy roadmap using SSS governance</li>
+    </ul>
+  </section>
+
+  <section class="mb-5">
+    <h3>10. Funding & Revenue</h3>
+    <p>We aim to raise <strong>$1.5M</strong> in exchange for equity and platform ownership rights. Revenue is projected from:</p>
+    <ul>
+      <li>Performance fees (15–30%) on managed funds</li>
+      <li>SaaS subscriptions for bot hosting</li>
+      <li>Institutional integrations</li>
+    </ul>
+  </section>
+
+  <section class="mb-5">
+    <h3>11. Contact</h3>
+    <p>
+      <strong>Company:</strong> Segura Mgmt Services LLC<br>
+      <strong>Email:</strong> <a href="mailto:brennen@seguramgmt.com">brennen@seguramgmt.com</a><br>
+      <strong>GitHub:</strong> <a href="https://github.com/bps1980" target="_blank">github.com/bps1980</a><br>
+      <strong>Website:</strong> <a href="https://www.seguramgmt.com" target="_blank">www.seguramgmt.com</a>
+    </p>
+  </section>
+</div>
+{% endblock %}

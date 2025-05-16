@@ -26,6 +26,7 @@ from pathlib import Path
 import os
 from dotenv import load_dotenv
 from django.conf import settings
+from decouple import config
 
 load_dotenv()
 
@@ -48,7 +49,11 @@ SECRET_KEY = 'django-insecure-iafloc^9w-^v&x0x=qnqu=5hcokspdofn+9z9-xbouw)5k!cpi
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['segura-django-1.onrender.com', 'localhost', '127.0.0.1']
+CSRF_TRUSTED_ORIGINS = [
+    "https://app.seguramgmt.com",
+]
+
+ALLOWED_HOSTS = ['app.seguramgmt.com', 'localhost', '127.0.0.1']
 
 
 # Application definition
@@ -68,7 +73,9 @@ INSTALLED_APPS = [
     'kyc',
     'django.contrib.humanize',
     'investoroutreach',
-    'clicktracker'
+    'clicktracker',
+    'services',
+    'scopegen'
 ]
 
 MIDDLEWARE = [
@@ -85,6 +92,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'starterkit.middleware.LogIPMiddleware',
 ]
 
 ROOT_URLCONF = 'starterkit.urls'
@@ -110,6 +118,8 @@ EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER")
 EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
 DEFAULT_FROM_EMAIL = os.getenv("DEFAULT_FROM_EMAIL")
 
+OPENAI_API_KEY = config("OPENAI_API_KEY")
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -121,6 +131,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'kyc.context_processors.inject_kyc_status',
             ],
         },
     },

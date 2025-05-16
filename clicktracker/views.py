@@ -36,7 +36,7 @@ class Command(BaseCommand):  # <- THIS must be named exactly `Command`
                 <p>I wanted to follow up on our previous message about strategic investment opportunities.</p>
                 <p>We're still actively engaging partners in AI, aerospace, blockchain, and GovTech.</p>
                 <p>
-                    <a href="https://yourdomain.com/click/{investor.id}" style="color:#007bff;">View Our Investment Deck</a>
+                    <a href="https://app.seguramgmt.com/click/{investor.id}" style="color:#007bff;">View Our Investment Deck</a>
                 </p>
                 <p>Best regards,<br>Brennen Segura</p>
                 </body></html>
@@ -70,7 +70,7 @@ def email_clicked(request, investor_id):
         recipient_list=["brennen@seguramgmt.com"]
     )
 
-    return redirect('https://your-actual-landing-page.com')
+    return redirect('https://app.seguramgmt.com')
 
 @staff_member_required
 def dashboard(request):

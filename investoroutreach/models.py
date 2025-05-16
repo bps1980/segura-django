@@ -7,6 +7,7 @@ class EmailLog(models.Model):
     success = models.BooleanField(default=False)
     reviewed = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
+    clicked = models.BooleanField(default=False)
 
     def __str__(self):
         return f"{self.company} – {self.recipient_email} – {'Success' if self.success else 'Failed'}"

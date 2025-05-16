@@ -1,0 +1,52 @@
+
+{% extends "components/landing-base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container py-5 mt-5">
+  <h1 class="display-4 text-center fw-bold mb-4">I’ll Build or Fix It in 24 Hours — $99 Flat</h1>
+  <p class="lead text-center text-muted mb-5">Fast coding help from a full stack, blockchain, and AI dev.</p>
+
+  <div class="row justify-content-center mb-5">
+    <div class="col-md-5">
+      <h4>What You Can Get:</h4>
+      <ul>
+        <li>Landing pages</li>
+        <li>Custom scripts</li>
+        <li>Bug fixes or feature adds</li>
+        <li>Web3 & Wallet Connect</li>
+        <li>API integrations</li>
+        <li>Trading bots / AI setups</li>
+      </ul>
+    </div>
+    <div class="col-md-5 text-center">
+      <h5>Pay with Cash App:</h5>
+      <img src="{% static 'services/cashapp_qr.jpeg' %}" class="img-fluid rounded border shadow-sm" style="max-width: 300px;" alt="Cash App QR">
+      <p class="mt-2"><strong>$BPSBPS</strong></p>
+      <h5 class="mt-4">Pay with Zelle:</h5>
+      <p><strong>337-658-0254</strong></p>
+    </div>
+  </div>
+
+  <h4 class="text-center mb-3">Request a Job:</h4>
+  <form method="post" class="mx-auto" style="max-width: 700px;">
+    {% csrf_token %}
+    <div class="mb-3">
+      <label class="form-label">Name</label>
+      <input type="text" name="name" class="form-control" required>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Email</label>
+      <input type="email" name="email" class="form-control" required>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">What Do You Need?</label>
+      <textarea name="message" class="form-control" rows="4" required></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary w-100">Submit Request</button>
+  </form>
+  {% if success %}
+  <div class="alert alert-success mt-4">Thanks! Your request has been received.</div>
+  {% endif %}
+</div>
+{% endblock %}

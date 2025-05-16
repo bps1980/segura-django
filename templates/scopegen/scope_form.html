@@ -1,0 +1,21 @@
+{% extends "components/base.html" %}
+
+{% load static %}
+
+{% block title %}Scope of Work Generator{% endblock %}
+
+{% block styles %}
+  <link rel="stylesheet" href="{% static 'css/scopegen.css' %}">
+{% endblock %}
+
+{% block scripts %}
+  <script src="{% static 'js/scopegen.js' %}"></script>
+{% endblock %}
+{% block content %}
+  <h2>Generate a Scope of Work</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Generate</button>
+  </form>
+{% endblock %}
