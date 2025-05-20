@@ -1,0 +1,12 @@
+<!-- templates/hiring/apply.html -->
+{% extends "components/base.html" %}
+{% block content %}
+<div class="container py-5">
+  <h2>Apply to {{ scope.project_type }}</h2>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Submit Application</button>
+  </form>
+</div>
+{% endblock %}

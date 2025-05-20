@@ -34,6 +34,7 @@ class ScopeOfWork(models.Model):
     is_shared = models.BooleanField(default=False)
     is_approved = models.BooleanField(default=False)
     is_pitch_ready = models.BooleanField(default=False)
+    is_hiring = models.BooleanField(default=False)  # 👈 Add this
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

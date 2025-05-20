@@ -10,6 +10,7 @@ from django.core.mail import EmailMessage
 from django.conf import settings
 from io import BytesIO
 import openai
+from django.views.decorators.http import require_POST
 
 client = openai.OpenAI(api_key=settings.OPENAI_API_KEY)
 
@@ -114,3 +115,11 @@ def duplicate_scope(request, pk):
         )
         return redirect('scopegen:scope_result', pk=new_instance.pk)
     return render(request, 'scopegen/duplicate_confirm.html', {'original': original})
+
+@require_POST
+@login_required
+def toggle_pitch_ready(request, pk):
+    scope = get_object_or_404(ScopeOfWork, pk=pk, user=request.user)
+    scope.is_pitch_ready = not scope.is_pitch_ready
+    scope.save()
+    return redirect('scopegen:scope_result', pk=pk)

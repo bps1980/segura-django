@@ -1,0 +1,9 @@
+<!-- templates/hiring/success.html -->
+{% extends "components/base.html" %}
+{% block content %}
+<div class="container py-5 text-center">
+  <h2 class="text-success">✅ Application Submitted!</h2>
+  <p>Thank you for your interest. We’ll review your submission and reach out if it’s a fit.</p>
+  <a href="{% url 'hiring:landing' %}" class="btn btn-outline-secondary mt-3">Back to Listings</a>
+</div>
+{% endblock %}

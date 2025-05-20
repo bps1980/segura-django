@@ -2,13 +2,12 @@ from django.contrib import admin
 from django.urls import path, include
 from kyc import views as kyc_views
 from landing import views as landing_views
-from clicktracker.views import email_clicked
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('investoroutreach/', include('investoroutreach.urls')),
     path('clicktracker/', include('clicktracker.urls')),
-    path("click/<int:investor_id>/", email_clicked, name="email_clicked"),
 
     # App URLs
     path('accounts/', include('accounts.urls')),
@@ -27,4 +26,8 @@ urlpatterns = [
     
     # ScopeGen
     path('scopegen/', include('scopegen.urls')),
+    
+    # Hiring
+    path('hiring/', include(('hiring.urls', 'hiring'), namespace='hiring')),
+
 ]

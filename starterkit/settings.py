@@ -75,7 +75,8 @@ INSTALLED_APPS = [
     'investoroutreach',
     'clicktracker',
     'services',
-    'scopegen'
+    'scopegen',
+    'hiring',
 ]
 
 MIDDLEWARE = [

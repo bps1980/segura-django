@@ -1,0 +1,23 @@
+<!-- templates/hiring/landing.html -->
+{% extends "components/base.html" %}
+{% block content %}
+<div class="container py-5">
+  <h2 class="text-center mb-4">🚀 Open Opportunities</h2>
+  <div class="row">
+    {% for scope in scopes %}
+    <div class="col-md-6 mb-4">
+      <div class="card h-100">
+        <div class="card-body">
+          <h5 class="card-title">{{ scope.project_type }} – {{ scope.industry }}</h5>
+          <p class="card-text">{{ scope.generated_scope|truncatechars:150 }}</p>
+          <p><strong>Tools:</strong> {{ scope.tools }}</p>
+          <a href="{% url 'hiring:scope_detail' scope.share_uuid %}" class="btn btn-outline-primary">View Details</a>
+        </div>
+      </div>
+    </div>
+    {% empty %}
+    <p class="text-muted text-center">No open positions available.</p>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

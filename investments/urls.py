@@ -11,6 +11,7 @@ urlpatterns = [
     path('plaid/set-access-token/', views.set_access_token, name='set_access_token'),
     path('pay/', views.create_coinbase_charge, name='coinbase_charge'),
     path('webhook/', views.coinbase_webhook, name='coinbase_webhook'),
+    path('scopes/', views.investor_scopes_view, name='investor_scopes'),
     #path('dag/whitepaper/', views.dag_whitepaper, name='dag_whitepaper'),
     path('dag/pitch-deck/', views.dag_pitch_deck, name='dag_pitch_deck'),
     #path('safex/whitepaper/', views.segurasafeswap_whitepaper, name='safex_whitepaper'),

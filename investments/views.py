@@ -32,6 +32,7 @@ from django.contrib.auth.decorators import login_required
 
 from django.utils import timezone
 from django.contrib import messages
+from scopegen.models import ScopeOfWork
 
 
 # Set your Stripe secret key
@@ -384,3 +385,11 @@ def investment_agreement_view(request, investment_id):
         'investment': investment,
         'user': request.user
     })
+    
+def investor_scopes_view(request):
+    scopes = ScopeOfWork.objects.filter(
+    is_pitch_ready=True,
+    is_shared=True,
+    is_approved=True
+)
+    return render(request, 'investments/investor_scopes.html', {'scopes': scopes})

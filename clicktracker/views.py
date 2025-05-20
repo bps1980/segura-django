@@ -57,20 +57,19 @@ class Command(BaseCommand):  # <- THIS must be named exactly `Command`
 
             except Exception as e:
                 self.stderr.write(f"Failed to send follow-up to {log.recipient_email}: {str(e)}")
-# clicktracker/views.py
 
 def email_clicked(request, investor_id):
-    investor = get_object_or_404(Investor, pk=investor_id)
-    EmailLog.objects.filter(recipient_email=investor.email).update(clicked=True)
+    investor = get_object_or_404(Investor, id=investor_id)
 
-    send_mail(
-        subject="Investor Clicked Link",
-        message=f"{investor.company_name} ({investor.email}) clicked the campaign link.",
-        from_email=settings.DEFAULT_FROM_EMAIL,
-        recipient_list=["brennen@seguramgmt.com"]
+    # Log the click event
+    EmailLog.objects.create(
+        investor=investor,
+        recipient_email=investor.email,
+        action='clicked',
     )
 
-    return redirect('https://app.seguramgmt.com')
+    # Redirect after click tracking (update target as needed)
+    return redirect('https://app.seguramgmt.com/')
 
 @staff_member_required
 def dashboard(request):

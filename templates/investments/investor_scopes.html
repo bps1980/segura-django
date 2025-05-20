@@ -1,0 +1,26 @@
+<!-- templates/investments/investor_scopes.html -->
+{% extends "components/base.html" %}
+{% block content %}
+<div class="container py-5">
+  <h2 class="mb-4">💼 Investor-Ready Projects</h2>
+
+  {% for scope in scopes %}
+    <div class="card mb-3">
+      <div class="card-body">
+        <h5 class="card-title">{{ scope.project_type }} – {{ scope.industry }}</h5>
+        <p class="card-text">{{ scope.generated_scope|truncatechars:250 }}</p>
+        <p>
+          <strong>Tags:</strong>
+          {% for tag in scope.tags.all %}<span class="badge bg-primary me-1">{{ tag.name }}</span>{% endfor %}
+        </p>
+        <a href="{% url 'scopegen:scope_public' uuid=scope.share_uuid %}" class="btn btn-outline-success">View Scope</a>
+        <a href="mailto:invest@seguramgmt.com?subject=Funding Inquiry: {{ scope.project_type }}" class="btn btn-outline-primary ms-2">
+          💸 Fund This Project
+        </a>
+      </div>
+    </div>
+  {% empty %}
+    <p>No investor-ready projects yet. Check back soon!</p>
+  {% endfor %}
+</div>
+{% endblock %}
